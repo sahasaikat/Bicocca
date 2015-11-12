@@ -1,19 +1,83 @@
-%%This is a very basic article template.
-%%There is just one section and two subsections.
-\documentclass{article}
+% ------------------------------------------------------------
+\documentclass[a4paper,oneside]{scrreprt}
 
+\usepackage{titlesec}
+\usepackage{vhistory}
+\usepackage{datetime}
+\usepackage{lastpage}
+
+
+
+\titleformat*{\subsubsection}{\bfseries}
+% ------------------------------------------------------------
 \begin{document}
 
+\begin{titlepage}
+\titlehead{
 
-\section{Title}
+}
 
-\subsection{Subtitle}
+\title{
+\vspace{-5mm}
+Learning From Failing and Passing Executions At the Speed of Internet
+\begin{center}
+\end{center}
+}
+\subtitle{
+\hspace{27 mm}{\LARGE Report 1}
+\newline
+\newline
+{\LARGE State of the Art}
+}
+\end{titlepage}
+% ------------------------------------------------------------
+\maketitle
+% ------------------------------------------------------------
+\chapter*{Document information}\label{docInfo}
+ \begin{tabular}[t]{|l|l|}
+   \hline
+% ------------------------------------------------------------
+   \multicolumn{2}{|l|}{\bf Project} \\ \hline
+   Project full title: & Learning From Failing and Passing Executions\\ 
+    &  At the Speed of Internet\\ \hline
+   Project start date: & 01.11.2015 \\ \hline
+   Project duration: & XX\,months \\ \hline
 
-Plain text.
+% ------------------------------------------------------------
+   \multicolumn{2}{|l|}{\bf Document} \\ \hline
+   Report number: & 1\\ \hline
+   Report title: & State of the Art \\ \hline
+   Editors: & L. Mariani D. Micucci \\ \hline
+   Contributors: & L. Mariani  D. Micucci O. Riganelli S. Saha \\ \hline
+   Due date of deliverable: & Month X\\ \hline
+   Draft/Final: & Draft\\ \hline
+   No of pages (including cover): & \pageref{LastPage} \\ \hline
+   Keywords: & Self-Healing\\ \hline
+% ------------------------------------------------------------
+\end{tabular}
+\newpage
+\section*{Abstract}
 
-\subsection{Another subtitle}
 
-More plain text.
+\begin{versionhistory}  
+  \vhEntry{1.0}{12.11.15}{Riganelli}{The first draft of the
+  Deliverable 1 is created.}
+
+ 
+\end{versionhistory}
 
 
+\tableofcontents
+\cleardoublepage
+
+
+\input{selfHealingDefinition}
+
+
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{../../biblio}
 \end{document}
