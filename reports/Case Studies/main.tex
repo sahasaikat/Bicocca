@@ -5,8 +5,12 @@
 \usepackage{vhistory}
 \usepackage{datetime}
 \usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage[toc]{glossaries}
 
 
+\makenoidxglossaries
+\input{glossary}
 
 \titleformat*{\subsubsection}{\bfseries}
 % ------------------------------------------------------------
@@ -32,6 +36,7 @@ Learning From Failing and Passing Executions At the Speed of Internet
 \end{titlepage}
 % ------------------------------------------------------------
 \maketitle
+
 % ------------------------------------------------------------
 \chapter*{Document information}\label{docInfo}
  \begin{tabular}[t]{|l|l|}
@@ -82,14 +87,17 @@ innovative solutions developed within the LEARN project.
 \tableofcontents
 \cleardoublepage
 
+\input{introduction}
+\input{softwareEcosystems}
+\input{systemsOfSystems}
+\input{conclusion}
 
 
 
 
 
 
-
-
+\printnoidxglossaries
 \bibliographystyle{plain}
-\bibliography{../../biblio}
+\bibliography{biblio}
 \end{document}
