@@ -1,11 +1,14 @@
 % ------------------------------------------------------------
 \documentclass[a4paper,oneside]{scrreprt}
 
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage{titlesec}
 \usepackage{vhistory}
 \usepackage{datetime}
 \usepackage{lastpage}
-
+\usepackage{hyperref}
+\usepackage{array}
 
 
 \titleformat*{\subsubsection}{\bfseries}
@@ -57,6 +60,7 @@ Learning From Failing and Passing Executions At the Speed of Internet
 \end{tabular}
 \newpage
 \section*{Abstract}
+In Section \ref{ch:selfHelingDefinition}, we present different self-healing definition.
 
 
 \begin{versionhistory}  
@@ -72,6 +76,8 @@ Learning From Failing and Passing Executions At the Speed of Internet
 
 
 \input{selfHealingDefinition}
+\input{selfHealingArchitecture}
+\input{selfHealingClassificationSchema}
 
 
 
@@ -79,5 +85,5 @@ Learning From Failing and Passing Executions At the Speed of Internet
 
 
 \bibliographystyle{plain}
-\bibliography{../../biblio}
+\bibliography{biblio}
 \end{document}
