@@ -1,22 +1,59 @@
 \chapter{Software Ecosystems}\label{ch:softwareEcosystems}
-To this class belong software systems that are built on top of a technical software platform by composing components developed by actors both internal and external.
+To this class belong software systems that are built on top of a technical
+software platform by composing components developed by actors both internal and
+external.
                                                	
 \begin{itemize}
 \item IDEs: 
 \begin{itemize}
-  \item Eclipse Ecosystem: The Eclipse ecosystem is the universe of Eclipse plugins together with the developers of these plugins. All different Eclipse plugins rely on a common underlying architecture, platform and set of libraries without which they are unable to function correctly. The community of plugin developers therefore shares the common goal of improving a complete integrated software development environment.        	 
+  \item Eclipse Ecosystem: The Eclipse ecosystem is the universe of Eclipse
+  plugins together with the developers of these plugins. All different Eclipse plugins rely on a common underlying architecture, platform and set of libraries without which they are unable to function correctly. The community of plugin developers therefore shares the common goal of improving a complete integrated software development environment. Bug example:
+  \begin{itemize}
+    \item Description: Bugzilla queries gone after moving from Eclipse 3.5 to
+    3.5.1. 
+    \item Link: https://bugs.eclipse.org/bugs/show\_bug.cgi?id=291334
+    \item Root cause: ExtensionEventDispatcherJob sets a mutually exclusive rule on the
+    thread then initializes tasks.ui which in turn tries to set a conflicting rule.
+    \item Status: Postponed
+  \end{itemize}
 \end{itemize}
-                
+               
 \item Programming Language Community: 
 \begin{itemize}
   \item The CRAN Ecosystem (cran.r-project.org): The GNU R community shares the
-  goal of creating a statistical computing environment. It achieves this through the Comprehensive R Archive Network (CRAN), a developer-centric ecosystem in which each community member can contribute packages implementing specific statistical analysis functions and visualization tools. A particularity of this ecosystem is that the community is mainly composed of end-users, that do not necessarily have a lot of development experience. CRAN has been experiencing maintainability problems due to the superlinearly growing number of packages and the limitations of R’s dependency versioning system.
+  goal of creating a statistical computing environment. It achieves this through
+  the Comprehensive R Archive Network (CRAN), a developer-centric ecosystem in which each community member can contribute packages implementing specific statistical analysis functions and visualization tools. A particularity of this ecosystem is that the community is mainly composed of end-users, that do not necessarily have a lot of development experience. CRAN has been experiencing maintainability problems due to the superlinearly growing number of packages and the limitations of R’s dependency versioning system. Bug example:
+  \begin{itemize}
+    \item Description: qchisq produced NaN when df=0.00991. 
+    \item Link: https://bugs.r-project.org/bugzilla3/show\_bug.cgi?id=14710
+    \item Root cause: The replacement
+    pgamma algorithm used from R 2.1.0 has an inadequate design. A solution is
+    to revert where needed to the normal approximation used in R 2.0.0 
+    \item Status: Closed.
+  \end{itemize}
 \end{itemize}                                        	
-
 \item Open source software foundation: 
 \begin{itemize}
-  \item Apache
-  \item Mozilla
+  \item Apache ecosystem: It is composed of 195 software projects
+spread in 23 different categories (eg, big-data, FTP, mobile, library, testing, XML) and
+developed by using a total of 29 programming languages. Bug example:
+   \begin{itemize}
+     \item Description: AreaReference(String) has been deprecated. This makes
+     AreaPtg(String), Area3DPtg(String, externIdx), Area3DPxg(SheetIdentifier,
+     String), Area3DPxg(int, SheetIdentifier, String) deprecated constructors.
+    \item Link: https://bz.apache.org/bugzilla/show\_bug.cgi?id=58331
+    \item Root cause: AreaReference(String) has been deprecated from bug 56328.
+    \item Status: Closed.
+    \end{itemize} 
+  \item Mozilla Bug example:
+   \begin{itemize}
+     \item Description: Browser Window turns black after pressing Press STRG
+     + TAB
+    \item Link: https://bugzilla.mozilla.org/show\_bug.cgi?id=660160\#c14
+    \item Root cause:  Fox Tab incompatibility. This add-o was affected by the
+    fix in bug 637204.
+    \item Status: Closed.
+    \end{itemize} 
 \end{itemize}          
 
 \item Mobile App Store: 
