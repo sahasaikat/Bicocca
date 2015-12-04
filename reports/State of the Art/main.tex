@@ -9,8 +9,10 @@
 \usepackage{lastpage}
 \usepackage{hyperref}
 \usepackage{array}
+\usepackage[titletoc]{appendix}
+\usepackage{paralist}
 
-
+\renewcommand{\appendixname}{Appendix}
 \titleformat*{\subsubsection}{\bfseries}
 % ------------------------------------------------------------
 \begin{document}
@@ -68,7 +70,8 @@ In Section \ref{ch:SelfHealingClassificationSchema}, we present the Classificati
 
 
 
-\begin{versionhistory}  
+\begin{versionhistory}
+\vhEntry{1.0}{04.12.15}{Riganelli}{Added appendix A.}  
   \vhEntry{1.0}{12.11.15}{Riganelli}{The first draft of the
   Report 1 is created.}
 
@@ -83,6 +86,8 @@ In Section \ref{ch:SelfHealingClassificationSchema}, we present the Classificati
 \input{selfHealingDefinition}
 \input{selfHealingArchitecture}
 \input{selfHealingClassificationSchema}
+
+\input{appendixA}
 
 
 
