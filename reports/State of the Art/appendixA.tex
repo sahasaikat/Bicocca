@@ -1,3 +1,4 @@
+%!TEX root =  main.tex
 \appendix
 \chapter{Detailed List of Self-Healing Approaches}
 \label{ap:approches}
@@ -6,19 +7,150 @@ This appendix reports \ldots
 
 \section{} \label{}
 \begin{compactitem}
-\item[\textbf{Title}] 
+\item[\textbf{Title}]Self-Adapting Reliability in Distributed Software Systems
 \item[\textbf{Author}] 
+Brun et al.
 \item[\textbf{Reference}] 
+\cite{brun_self-adapting_2015}
 \item[\textbf{Year}] 
-\item[\textbf{Application Domain}]
-\item[\textbf{Self-Healing steps}] 
-\item[\textbf{Technical Approach}]
+August, 2015
+\item[\textbf{Application Domain}] 
+Distributed software system
+\item[\textbf{Self-Healing steps}] Self-healing steps involved are fault-detecting, diagnosis and recovering
+\item[\textbf{Technical Approach}]Iterative redundancy technique
 \item[\textbf{Basic Idea}] 
+Iterative redundancy deploys d jobs, waits for the responses, processes the distribution of those responses, and afterwards sends the minimum number of jobs such that, if every one of the jobs respond with the most-frequent answer, there will be d more such replies than different answers.
+
+On the off chance that the node reliability r and the desired system reliability R are known, d is the minimum number of jobs that need to concur collectively to accomplish the confidence level.
+
 \item[\textbf{Summary of approach}]
-\item[\textbf{Fault Types}]
-\item[\textbf{Failure Types}]
-\item[\textbf{Input data}] 
-\item[\textbf{Recovery actions}]
-\item[\textbf{Advantages}] 
-\item[\textbf{Disadvantages}] 
+Iterative repetition is our novel way to deal with software system reliability by automatically injecting redundancy into the system's deployment. It conveys the minimum number of jobs required to achieve a coveted confidence/threshold level in the outcome.This procedure continues until the concurring results adequately outcome the differing results to achieve the confidence threshold.
+
+\item[\textbf{Fault Types}]Byzantine attacks.
+
+\item[\textbf{Failure Types}]Byzantine attacks.
+
+\item[\textbf{Input data}] n independent jobs that perform the same jobs.
+
+\item[\textbf{Recovery actions}]The technique try the deploy the redundant number of jobs in order to achieve consens level.
+
+\item[\textbf{Advantages}] Iterative redundancy is more cost effective as it creates the same level of software system reliability at a lower expense.
+
+\item[\textbf{Disadvantages}] Using traditional redundancy, a task server can deploy all k jobs at once. Meanwhile, using progressive or iterative redundancy, the task server must deploy several jobs and wait for the responses before possibly choosing to deploy more. Therefore, these techniques can increase the latency for a particular task.
+
+\item[\textbf{Case studies}]
+The technique is implemented and tested on PlanetLab. PlanetLab is a gathering of PCs accessible as a testbed for distributed systems research.\\
 \end{compactitem}
+
+
+\begin{compactitem}
+\item[\textbf{Title}]SH˜oWA: A Self-Healing Framework for Web-Based
+
+\item[\textbf{Author}]Magalhães and Silva 
+
+\item[\textbf{Reference}]
+
+\cite{magalhaes_showa:_2015}
+
+\item[\textbf{Year}] 2015
+
+\item[\textbf{Application Domain}]
+Web-based applications 
+
+\item[\textbf{Self-Healing steps}] 
+The self-healing loop used in this paper has four stages:Monitor, Plan, Analyze and Execute.
+
+\item[\textbf{Technical Approach}]Aspect oriented programming, Pearson's and Spearman's rank correlation analysis.
+
+\item[\textbf{Basic Idea}] 
+Detects anomalies in web applications by statistical correlation analysis. Uses data analysis techniques to detect changes/variations in server response time and finds out whether the change of time was due to work load or degradation in performance. If the delay in response time is due to performance anomaly, then respective recovery strategies is executed autonomously.
+
+\item[\textbf{Summary of approaches}] 
+
+1.Aspect oriented programming is used build up the sensor module to collect data and response time at runtime.\\
+
+2.The parameters collected is analysed using Pearson's correlation coefficient (X = the sequence of the accumulated response server time per user transaction and Y= the number of user transactions processed in the same interval) to calculate the degree of association (p), which determines  the chances of anomaly.More correlation = chances of more anomaly and less correlation = chances of less anomaly.\\
+
+3.We use Spearman's rank correlation to measure the degree of association between X and Y, denoted by rho(ρ). If ρ is stable / high across,then the response time is associated with the application workload and if ρ decreases, the response time delay is due to performance anomaly.\\
+
+4. In the workload variation analysis module, the input for this module are: X=Accumulated response time in a given time interval and Y= The total number of requests waiting in the application container queue in the same time interval.We calculate ρ using spearman’s rank correlation coefficient.The fact that the ρ degree is low and stable means two things: (1) the response time has not suffered delays, and (2) there was no significant accumulation of requests in the application server queue waiting to be processed. If the ρ degree is medium or large, then it means that there are problems with the processing workload. The several workload problems are (e.g., bursty workload, server queue issues).\\
+
+5. In the anomaly detector module, after detecting a performance anomaly, the anomaly detector modules aims to identify, if there is any system or application server change associated with the anomaly. X= The total number of user transactions processed in an interval and Y=The accumulated value of the parameters collected by the sensor module in the same interval. Y is a vector which contains each parameter collected. ρ degree will decrease or constant, showing the parameters (or set of parameters) is no longer associated with the number of requests.In this case, no changes in the correlation degree between the parameters that are analyzed and the number of user transactions processed.It can be said that the performance anomaly is not related to changes at the system or application server level.\\
+
+6. The root-cause failure analysis module analyzes the user transactions that have reported only a performance anomaly. To verify if a performance anomaly is associated with an application change or a remote service change, X is defined as the frequency distribution of the transaction response time and Y assumes the response time frequency distribution of the calls belonging to the transaction call path. The correlation between the variables is determined using Spearman’s rank correlation coefficient. In this situation, the ρ degree increases, highlighting the calls potentially associated with the performance slowdown.\\
+
+7. The recovery planner module is used to store the recovery procedure. The executor module is responsible for executing the specific recovery actions that has been triggered. The method is implemented using a client-server program. The client sends the actions to be performed to the server and receives feedback about its implementation. The semisupervised methodology makes use of utility functions and machine learning techniques to select a recovery procedure for a  particular anomaly. In the current implementation, the recovery process is procedure based and defined by a human operator.
+
+\item[\textbf{Fault types}]Response time delay from the application server
+
+\item[\textbf{Failures types}]Response time delay from the application server
+
+\item[\textbf{Input data}] The input (faults) are the parameters which are collected by the sensor module. For instance user transactions, CPU time per user transactions, amount of available memory.
+
+\item[\textbf{Recovery actions}]The output (recovered data) are the recovery strategies which are carried forward or executed against the particular anomalies detected.
+
+\item[\textbf{Advantages}] It is advantageous of the showa sensor module is that it separates the monitoring code from the application code, thereby allowing an application to be monitored without the need for manually changing its source code. With this separation, multiple applications can be monitored using the same monitoring code.
+
+The framework is generic and can be applied to any type of transactional Web application. The only module that needs to be ported is the Sensor module
+
+\item[\textbf{Disadvantages}]The ability to detect anomalies while the number of end users affected is low.
+
+\item[\textbf{Case studies}]One retail store web application and an auction web application has been used in this paper for testing the framework.
+\end{compactitem}
+
+
+
+\begin{compactitem}
+\item[\textbf{Title}]GenProg: A Generic Method for Automatic Software Repair
+
+\item[\textbf{Author}]
+Goues et al.   
+\item[\textbf{Reference}]  
+
+\cite{le_goues_genprog:_2012}
+
+\item[\textbf{Application Domain}]
+Real, unannotated programs with publicly documented bugs
+
+\item[\textbf{Self-Healing steps:}]. The closed loop repair system works in this way. The method adopts an IDS (intrusion-detection system) that detects the anomalies in the system.
+
+Whenever, the Intrusion Detection System,IDS detects an annomaly, GenProg is invoked to repair the suspicious behavior.
+
+\item [\textbf{Technical Approach}] The method adopts an IDS (intrusion-detection system) that detects the anomalies in the system.
+
+\item[\textbf{Basic Idea}] The program implements three functions:
+
+The \textit{initialpopulation} generates the variants by using the mutual operators based on the input program and test cases.
+
+The \textit{fitness function} evaluates each variants created and chooses the best amongst them.
+
+The \textit{GenProg} iterates by selecting high fitness individuals, which are selected for continuous evolutions for the next.
+
+\item[\textbf{Summary of approach}]
+The technical approach used in this paper by the author can be classified in four stages:-
+\textit{Program Representation:}Each variant is represented by a pair of an abstract syntax tree   (AST)and a weighted path. The abstract syntax tree contains all the statements of the program and a weighted path contains all the statements in the program that has been assigned a weight based on the occurrence of the statement the test cases.\\
+
+\textit{Selection and Genetic Operators:}GenProg discards individuals with fitness 0 (variants that do not compile or that pass no test cases) and places the remainder in Viable. It then uses a selection strategy to select pop size/2 members of a new generation from the previous iteration.\\ 
+
+\textit{Fitness function:}The fitness function evaluates the acceptability of a program variant. The fitness function mentioned in this paper, encodes software requirements at the test case level: negative test cases encode the fault to be repaired, while positive test cases encode functionality that cannot be sacrificed.\\
+
+\textit{Repair Minimization:}
+
+The search terminates successfully when GP discovers a primary repair that passes all test cases. Due to randomness in the mutation and crossover algorithms, the primary repair typically contains at least an order-of-magnitude more changes than are necessary to repair the program, rendering the repairs difficult to inspect for correctness.
+
+
+\item[\textbf{Fault Types}]Infinite loop, Segmentation fault, Remote heap buffer over flow to inject code, Remote heap buffer overflow to overwrite variables, Non overflow denial of service, Local stack buffer overflow, Integer overflow and Format string vulnerability.
+
+\item[\textbf{Input data}] Input source code contains a failing negative test case that exercises the defect and a set of passing positive test cases that describe requirements.
+
+\item[\textbf{Recovery actions}]The recovery action is the primary repair that passes all test cases.
+
+\item[\textbf{Advantages}] 
+The GP search space focuses genetic operations along a weighted path and takes advantage of test case coverage information, and reusing existing program statements.
+
+\item[\textbf{Disadvantages}] GenProg relies on test cases to encode both an error to repair and important functionality. GenProg cannot repair race conditions as it is difficult to encode an error using test cases for non-deterministic properties.
+
+
+\end{compactitem}
+
+
