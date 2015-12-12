@@ -15,28 +15,51 @@ Brun et al.
 \item[\textbf{Year}] 
 August, 2015
 \item[\textbf{Application Domain}] 
-Distributed software system
+Distributed computation architecture
 \item[\textbf{Self-Healing steps}] Self-healing steps involved are fault-detecting, diagnosis and recovering
 \item[\textbf{Technical Approach}]Iterative redundancy technique
 \item[\textbf{Basic Idea}] 
-Iterative redundancy deploys d jobs, waits for the responses, processes the distribution of those responses, and afterwards sends the minimum number of jobs such that, if every one of the jobs respond with the most-frequent answer, there will be d more such replies than different answers.
 
-On the off chance that the node reliability r and the desired system reliability R are known, d is the minimum number of jobs that need to concur collectively to accomplish the confidence level.
+The iterative redundancy algorithm is used to calculate the minimum of jobs to get a consensus, assuming that all the jobs produce the same result. The minimum number of jobs $d$ is calculated taking into account the system reliability $\mathbb{R}$ and node reliability $r$. The system reliability is used as a confidence threshold.
+
+The minimum number of jobs $d$ is calculated taking into account the system reliability $\mathbb{R}$ and node reliability $r$, using the formulae:
+
+
+\begin{figure}[H]
+\center
+\includegraphics[width=1.5in]{img/formulae}
+\caption{The reliability of a system:}
+\end{figure} 
+
+
+
+
 
 \item[\textbf{Summary of approach}]
-Iterative repetition is our novel way to deal with software system reliability by automatically injecting redundancy into the system's deployment. It conveys the minimum number of jobs required to achieve a coveted confidence/threshold level in the outcome.This procedure continues until the concurring results adequately outcome the differing results to achieve the confidence threshold.
 
-\item[\textbf{Fault Types}]Byzantine attacks.
+
+Distributed computing architectures ensure the correct execution of each task through voting: multiple independent computational nodes perform the same task and if the majority of executions agree on a result, a consensus exists, and that result is taken to be the solution of that task. Iterative redundancy tries to optimize the use of computational nodes by distributing the minimum number of jobs that perform the same task required to achieve a desired confidence level in the result, assuming that all the jobs’ results agree. Then, if all jobs agree, the task is completed. However, if some results disagree, the confidence level associated with the majority result is diminished because of the chance that the disagreeing results are correct. The proposed approach then reevaluates the situation and distributes the minimum number of additional jobs that would achieve the desired level of confidence.
+This process repeats until the agreeing results sufficiently outnumber the disagreeing results to reach the confidence threshold.
+
+
+The flow-digram of the iterative redundancy algorithm is given by:
+\begin{figure}[H]
+\center
+\includegraphics[width=5in]{img/Iterativeredundancyschematic}
+\caption{Iterative redundancy schematic:}
+\end{figure} 
+
+\item[\textbf{Fault Types}]Byzantine attacks: A Byzantine fault is one where the faulty unit continues to run but produces incorrect results and might lead to failure sometimes.
 
 \item[\textbf{Failure Types}]Byzantine attacks.
 
 \item[\textbf{Input data}] n independent jobs that perform the same jobs.
 
-\item[\textbf{Recovery actions}]The technique try the deploy the redundant number of jobs in order to achieve consens level.
+\item[\textbf{Recovery actions}]The technique try the deploy the redundant number of jobs in order to achieve consensus level.
 
 \item[\textbf{Advantages}] Iterative redundancy is more cost effective as it creates the same level of software system reliability at a lower expense.
 
-\item[\textbf{Disadvantages}] Using traditional redundancy, a task server can deploy all k jobs at once. Meanwhile, using progressive or iterative redundancy, the task server must deploy several jobs and wait for the responses before possibly choosing to deploy more. Therefore, these techniques can increase the latency for a particular task.
+\item[\textbf{Disadvantages}] In iterative redundancy, the task server deploys several jobs and wait for the responses before possibly choosing to deploy more jobs. Therefore, this technique increases the latency for a particular task.
 
 \item[\textbf{Case studies}]
 The technique is implemented and tested on PlanetLab. PlanetLab is a gathering of PCs accessible as a testbed for distributed systems research.\\
@@ -63,7 +86,7 @@ The self-healing loop used in this paper has four stages:Monitor, Plan, Analyze 
 \item[\textbf{Technical Approach}]Aspect oriented programming, Pearson's and Spearman's rank correlation analysis.
 
 \item[\textbf{Basic Idea}] 
-Detects anomalies in web applications by statistical correlation analysis. Uses data analysis techniques to detect changes/variations in server response time and finds out whether the change of time was due to work load or degradation in performance. If the delay in response time is due to performance anomaly, then respective recovery strategies is executed autonomously.
+Detects anomalies in web applications by statistical correlation analysis. Uses data analysis techniques to detect variations in server response time and finds out whether the change of time was due to work load or degradation in performance. If the delay in response time was due to performance anomaly, then respective recovery strategies is executed autonomously.
 
 \item[\textbf{Summary of approaches}] 
 
@@ -85,9 +108,9 @@ Detects anomalies in web applications by statistical correlation analysis. Uses 
 
 \item[\textbf{Failures types}]Response time delay from the application server
 
-\item[\textbf{Input data}] The input (faults) are the parameters which are collected by the sensor module. For instance user transactions, CPU time per user transactions, amount of available memory.
+\item[\textbf{Input data}] The input are the parameters which are collected by the sensor module. For instance user transactions, CPU time per user transactions, amount of available memory.
 
-\item[\textbf{Recovery actions}]The output (recovered data) are the recovery strategies which are carried forward or executed against the particular anomalies detected.
+\item[\textbf{Recovery actions}]The output are the recovery strategies which are carried forward or executed against the particular anomalies detected.
 
 \item[\textbf{Advantages}] It is advantageous of the showa sensor module is that it separates the monitoring code from the application code, thereby allowing an application to be monitored without the need for manually changing its source code. With this separation, multiple applications can be monitored using the same monitoring code.
 
@@ -152,5 +175,62 @@ The GP search space focuses genetic operations along a weighted path and takes a
 
 
 \end{compactitem}
+
+
+
+\begin{compactitem}
+
+\item[\textbf{Title}]Exception Handling for Repair in Service-Based Processes
+
+\item[\textbf{Author}]Friedrich et al.
+
+\item[\textbf{Reference}] 
+
+\cite{friedrich2010exception}
+
+\item[\textbf{Year}] 2010
+
+\item[\textbf{Application Domain}]
+Service-based processes
+
+\item[\textbf{Self-Healing steps}] The self healing loop is: design, diagnosis, repair
+
+
+Diagnosis: This phase determines where the error took place and what the cause of the error is. The knowledge about the fault is crucial for repairing the process and for minimizing the need for re executing parts of the process. Such knowledge is obtained through diagnosis,  using a diagnosis tool.
+
+\item[\textbf{Technical Approach}]Model based approach
+
+\item[\textbf{Basic Idea}] In this paper, we design repair strategies based on the structure of the process by using model-based approach. The repair plan / actions is defined in the process model. The approach is based on the concept of self-healing system. In this approach, the repair information is associated with a process at design time and the repair plans are generated at runtime.
+
+\item[\textbf{Summary of approach}]
+
+\item[\textbf{Fault Types}]The two types of faults that can be healed in this case are: 
+
+\item[\textbf{Failure Types}]The two types of faults that has been healed in this case are:
+
+An incorrect item code with an item name. The system send a wrong shipping note to warehouse, which therefore does not process the order and the package correctly.
+
+
+When the are house receives the item description from the SHOP through the FORWARDORDER operation, it discovers that the order goods, the shipping note and the package are inconsistent with respect to the goals provided by the supplier and thus raised failure 1.
+
+\item[\textbf{Input data}] 
+
+\item[\textbf{Recovery actions}]
+
+\item[\textbf{Advantages}] 
+Repair follows the same logic as the original process and different repairs can be proposed for different causes of failures, with the goal of minimizing both the amount of work to be redone in the process and the compensation and/or reexecution of external services.
+
+\item[\textbf{Disadvantages}] 
+
+
+
+\item[\textbf{Case study}] 
+
+
+The approach has been used on a food shop selling company, which sells products online using a service-oriented architecture (SDA) infrastructure with four services.
+
+\end{compactitem}
+
+
 
 
