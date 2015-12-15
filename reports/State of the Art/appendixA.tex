@@ -25,14 +25,6 @@ The iterative redundancy algorithm aims to deploy the minimum number of jobs to 
 Distributed computing architectures ensure the correct execution of each task through voting: multiple independent computational nodes perform the same task and if the majority of executions agree on a result, a consensus exists, and that result is taken to be the solution of that task. Iterative redundancy tries to optimize the use of computational nodes by distributing the minimum number of jobs that perform the same task required to achieve a desired confidence level in the result, assuming that all the jobs’ results agree. Then, if all jobs agree, the task is completed. However, if some results disagree, the confidence level associated with the majority result is diminished because of the chance that the disagreeing results are correct. The proposed approach then reevaluates the situation and distributes the minimum number of additional jobs that would achieve the desired level of confidence.
 This process repeats until the agreeing results sufficiently outnumber the disagreeing results to reach the confidence threshold.
 
-
-The flow-digram of the iterative redundancy algorithm is given by:
-\begin{figure}[H]
-\center
-\includegraphics[width=5in]{img/Iterativeredundancyschematic}
-\caption{Iterative redundancy schematic:}
-\end{figure} 
-
 \item[\textbf{Fault Types}]Byzantine attacks: A Byzantine fault is one where the faulty unit continues to run but produces incorrect results and might lead to failure sometimes. 
 
 \item[\textbf{Failure Types}]Functional failures.
@@ -50,9 +42,9 @@ The technique is implemented and tested on PlanetLab. PlanetLab is a gathering o
 \end{compactitem}
 
 
-\section{SH˜oWA} \label{ap:Showa}
+\section{SH\~oWA} \label{ap:Showa}
 \begin{compactitem}
-\item[\textbf{Title}]A Self-Healing Framework for Web-Based Applications (SH˜oWA)
+\item[\textbf{Title}]A Self-Healing Framework for Web-Based Applications (SH\~oWA)
 
 \item[\textbf{Author}]Joao Paulo Magalhaes and Luis Moura Silva
 
@@ -66,35 +58,46 @@ The technique is implemented and tested on PlanetLab. PlanetLab is a gathering o
 Web-based applications. 
 
 \item[\textbf{Self-Healing steps}] 
-The self-healing steps involved are:Monitor, Plan, Analyze and Execute.
+The self-healing steps involved are:Monitor, Plan, Analyse and Execute.
 
 \item[\textbf{Technical Approach}] Statistical correlation (Spearman's rank correlation). 
 %The Spearman's rank correlation coefficient (rho) measures the statistical dependence between two variables.
 
 \item[\textbf{Basic Idea}] 
-The basic idea is to collect system, application server,
-and application-level data, such as response time of per user transactions and CPU time per user transaction, so as to detect and pinpoint anomalies by means of statistical correlation. The performed data analysis detects changes in the server response time and analyses if those changes are correlated with the workload or are due to a performance anomaly. In the presence of performance anomalies, the analysis pinpoints the method calls that are more likely responsible to cause the anomaly.
+The basic idea is to collect and analyse system, application server,
+and application-level data, such as response time of user transactions and amount of available memory, so as to detect and pinpoint anomalies by means of statistical correlation. The performed data analysis detects changes in the server response time and analyses if those changes are correlated with a workload variation or are due to a performance anomaly. In the presence of performance anomalies, the analysis pinpoints the method calls that are more likely responsible to cause the anomaly.
 
 \item[\textbf{Summary of approaches}] 
 
-The SH˜oWA framework mainly works in four steps. In the first step, SH˜oWA collect system monitor, analyse, plan and execute. Step by step modules consists of various statistical analysis, which are performed during the web application runtime to distinguish performance anomalies from workload variations, to detect the fault and approaching towards recovery procedure. The entire process consists of the following modules (1.sensor module, 2. data preparation module, 3.1. workload variation analysis module, 3.2.performance anomaly analysis module, 3.2.1.anomaly detector module, 3.2.2.root-cause failure analysis module, 4.recovery planner, 5.executor module and 6. effector module)
+SH˜oWA FRAMEWORK
+
+The SH\~oWA framework mainly works in four steps: Monitor, Analyse, Plan, and Execute. The monitor steps is executed by the sensor and data interpretation module. The analyse step is executed by the workload variation analysis, performance anomaly analysis, anomaly detector and root-clause failure analysis module. The plan step is executed by the recovery planner module and the execute step is executed by the executor and effector module. The digram below shows the different modules of the  SH\~oWA framework.
 
 \begin{figure}[H]
 \center
 \includegraphics[width=5in]{img/selfhealingframework}
-\caption{(SH˜oWA).: self healing framework}
-\end{figure}  
+\caption{(SH\~oWA).: self healing framework}
+\end{figure}
 
-The sensor module monitors the system level performance and checks the status of the system services and performance (CPU load, JVM heap memory, number of open files and number of running threads). Additionally, it gathers execution time of application transactions. The data collected by the sensor module gets prepared by the data preparation module, to form an unique key that identifies the various user transactions in the web applications. The prepared data is passed on to the workload variation analysis and performance anomaly analysis modules to detect and pinpoint if any anomaly is present. The data analysis is based on Spearman's rank correlation coefficient represented by rho(p). The correlation coefficient is given by the equation below and it expresses how two variables (X and Y) are associated.
+The Sensor module collects data from different system and application server parameters and measures the execution time of user transactions and application calls. The data is sent to a remote database to be prepared by the Data Preparation module. The Workload Variation Analysis and Performance Anomaly Analysis modules carry out statistical analysis to detect response time variations and to verify if the response time variations are due to workload changes or are a symptom of a performance anomaly. The Anomaly Detector module carries out statistical analysis to detect if there is any change in the system or application server parameters correlated with the performance anomaly. The Root-cause Failure Analysis module carries out statistical analysis to analyse the response time of the application calls to check if there are changes in the application, or in the invocation of remote services, that are correlated with the performance anomaly. Upon the detection and localization of performance anomalies, the recovery phase follows. The recovery phase involves the Recovery Planner module, which is responsible for selecting the recovery procedure, and the Executor module, which dispatches the recovery actions to be applied on the managed resource by the Effector module.\\
 
-\begin{figure}[H]
-\includegraphics[width=5in]{img/formulae}
-\caption{Measure of statistical dependence between two variables.}
-\end{figure} 
+The sensor module monitors key performance indicators such as CPU load, JVM heap memory, number of open files and number of running threads. Additionally, it gathers execution time of application transactions. The data collected by the sensor module is processed by the data preparation module that associates each measurement to a specific user transactions of the monitored web application. The prepared data is then passed to the workload variation analysis and performance anomaly analysis modules to detect and pinpoint if any anomaly is present. The data analysis is based on Spearman's rank correlation coefficient represented by rho ($\rho$). The correlation coefficient is given by the equation below and  expresses how two variables are associated:
 
-where X is the sequence of the accumulated response server time per user transaction and Y is the number of user transactions processed in the same interval.If p remains stable and high across the periods of analysis, then it means that the response time is associated with the application workload. If p  decreases, then it means that one of the variables has increased or decreased while the other has remained stable or changed in an opposite direction. This dissociation corresponds to a symptom of performance anomaly.Once the performance anomaly is identified by the Spearman's coefficient equation, the anomaly detector module aims to identify if there is a system or application server changes which is associated with the performance anomaly. For this identification, we create a vector Y for each parameters collected. The vector contains the total number of user transactions precessed in an interval and the accumulated value of the parameters collected by the sensor module in the same interval. If the accumulated value of a given
-parameter increases and is not motivated by an increase in the number of requests,then the ρ degree will decrease, showing that a parameter is no longer aligned with the number of requests. The data analysis in this module helps to determine if the application is facing a performance anomaly and verifies if the anomaly is associated with changes in the parameters that has been analyzed by the anomaly detector module. The root cause analysis module analyses user transactions that have only reported a performance anomaly in the previous stage. The root cause analyses module takes two variables X and Y as input and uses the Doane's formulae to determine the exact list of call methods which are creating the response time delay  leading to performance anomaly. Once the list of call methods are identified, the recovery planner module is invoked which contains the recovery procedure for each of the anomalies detected. The recovery procedure is selected according to the type of anomaly detected.In the current implementation, the recovery actions are procedure based and defined by human operator.In future research prospect, it is a novel idea to design the recovery procedures using the machine learning techniques.Once selected, a recovery procedure is executed by the executor module. The main job of the executor module is to execute the specific recovery action which has been triggered with respect to the specific anomaly detected.Once the recovery action has been executed, the handler is passed to the effector module which monitors and keeps track of the number of call methods that has triggered anomaly, how many
-of these are in recovery and how any of them has already been recovered.In future research prospect, it is a novel idea to design the recovery procedures using the machine learning techniques.
+%begin{figure}[H]
+%includegraphics[width=5in]{img/formulae}
+%caption{Measure of statistical dependence between two %variables.}
+%end{figure} 
+
+%\rho=\frac { \sum_{ i=1} ^n(X_i-\bar{ X})(Y_i-\bar{ Y})}%%%{\sqrt{\sum_{ i=1} ^n (X_i-\bar{ X})^2 (Y_i-\bar{ Y})^2} }
+%}
+
+\rho=\frac { \sum_{ i=1} ^n(X_i-\bar{ X})(Y_i-\bar{ Y})}{\sqrt{\sum_{ i=1} ^n (X_i-\bar{ X})^2 (Y_i-\bar{ Y})^2}} \\
+
+where X is the sequence of the accumulated response server time per user transaction and Y is the number of user transactions processed in the same interval.If p remains stable and high across the periods of analysis, then it means that the response time is associated with the application workload (e.g., bursty workload, server queue issues). If p  decreases, then it means that one of the variables has increased or decreased while the other has remained stable or changed in an opposite direction. This dissociation corresponds to a symptom of performance anomaly (e.g. performance slowdowns from the number of user transactions processed.).Once the performance anomaly is identified by using  Spearman's rank correlation coefficient, the anomaly detector module aims to identify if there is a system or application server changes which is associated with the performance anomaly. As in the previous analyses, the anomaly detector module computes Spearman’s rank correlation coefficient $\rho$ between  the total number of user transactions processed in an interval and the accumulated value of the parameters collected by the Sensor module in the same interval. If the accumulated value of a given parameter increases and is not motivated by an increase in the number of user transactions, then the $\rho$ degree will decrease, showing that a parameter is no longer aligned with the number of requests and associating this with the performance anomaly. The data analysis in this module determines if the application is facing a performance anomaly and verifies if the anomaly is associated with changes in the parameters. If the performance anomaly is confirmed by the anomaly detection module, the root cause analysis module analyses user transactions that have only reported a performance anomaly in the previous stage. 
+The root cause failure analyses module analyses the frequency of the response time of a user transaction and the response time frequency for the calls belonging to the user transaction under analysis. By applying the Spearman’s correlation analysis,this module is able to determine the list of method calls associated with the performance anomaly.
+
+%In the current implementation, the recovery actions are procedure based and defined by human operator.In future research prospect, it is a novel idea to design the recovery procedures using the machine learning techniques.Once selected, a recovery procedure is executed by the executor module. The main job of the executor module is to execute the specific recovery action which has been triggered with respect to the specific anomaly detected.Once the recovery action has been executed, the handler is passed to the effector module which monitors and keeps track of the number of call methods that has triggered anomaly, how many
+%of these are in recovery and how any of them has already been recovered.In future research prospect, it is a novel idea to design the recovery procedures using the machine learning techniques.
 
 \item[\textbf{Fault types}]Fail-stutter fault model. 
 
@@ -106,7 +109,7 @@ In fail-stutter fault model, the components of a system sometimes fail and somet
 
 \item[\textbf{Recovery actions}]The output are the recovery strategies which are carried forward or executed against the particular anomalies detected.
 
-\item[\textbf{Advantages}] In SH˜oWA sensor module the monitoring code is separated from the application code, thereby an application can be monitored without the need for manually changing its source code. With this separation, multiple applications can be monitored using the same monitoring code. The framework is generic and can be applied to any type of transactional web application. The only module that needs to be ported is the Sensor module
+\item[\textbf{Advantages}] In SH\~oWA sensor module the monitoring code is separated from the application code, thereby an application can be monitored without the need for manually changing its source code. With this separation, multiple applications can be monitored using the same monitoring code. The framework is generic and can be applied to any type of transactional web application. The only module that needs to be ported is the Sensor module
 
 \item[\textbf{Disadvantages}]The ability to detect anomalies while the number of end users affected is low.
 We need the source code of the application to deploy the sensor module.
