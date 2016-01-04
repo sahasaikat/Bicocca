@@ -48,7 +48,7 @@ The technique is implemented and tested on PlanetLab. PlanetLab is a gathering o
 \end{compactitem}
 
 
-\section{SH\~oWA} \label{ap:Showa}
+\section{SHoWA} \label{ap:Showa}
 \begin{compactitem}
 \item[\textbf{Title}]A Self-Healing Framework for Web-Based Applications (SH\~oWA)
 
@@ -70,8 +70,7 @@ The self-healing steps involved are:Monitor, Plan, Analyse and Execute.
 %The Spearman's rank correlation coefficient (rho) measures the statistical dependence between two variables.
 
 \item[\textbf{Basic Idea}] 
-The basic idea is to collect and analyse system, application server,
-and application-level data, such as response time of user transactions and amount of available memory, so as to detect and pinpoint anomalies by means of statistical correlation. The performed data analysis detects changes in the server response time and analyses if those changes are correlated with a workload variation or are due to a performance anomaly. In the presence of performance anomalies, the analysis pinpoints the method calls that are more likely responsible to cause the anomaly.
+The basic idea is to collect and analyse system, application server, and application-level data, such as response time of user transactions and amount of available memory, so as to detect and pinpoint anomalies by means of statistical correlation. The performed data analysis detects changes in the server response time and analyses if those changes are correlated with a workload variation or are due to a performance anomaly. In the presence of performance anomalies, the analysis pinpoints the method calls that are more likely responsible to cause the anomaly.
 
 \item[\textbf{Summary of approaches}] 
 
@@ -127,26 +126,37 @@ We need the source code of the application to deploy the sensor module.
 \end{compactitem}
 
 
-
+\section{GenProg}\label{ap:GenProg}
 \begin{compactitem}
 \item[\textbf{Title}]GenProg: A Generic Method for Automatic Software Repair
 
 \item[\textbf{Author}]
-Goues et al.   
+Claire Le Goues, ThanhVu Nguyen, Stephanie Forrest, and Westley Weimer
+
 \item[\textbf{Reference}]  
 
 \cite{le_goues_genprog:_2012}
 
 \item[\textbf{Application Domain}]
-Real, unannotated programs with publicly documented bugs
+Web application 
 
-\item[\textbf{Self-Healing steps:}]. The closed loop repair system works in this way. The method adopts an IDS (intrusion-detection system) that detects the anomalies in the system. Whenever, the Intrusion Detection System,IDS detects an annomaly, GenProg is invoked to repair the suspicious behavior.
+\item[\textbf{Self-Healing steps:}]. The closed loop repair system works in this way. The method adopts an IDS (intrusion-detection system) that detects the anomalies in the system. Whenever, the IDS detects an annomaly, GenProg is invoked to repair the suspicious behavior.
 
-\item [\textbf{Technical Approach}] The method adopts an IDS (intrusion-detection system) that detects the anomalies in the system.An intrusion detection system (IDS) is a device or software application that monitors system activities for malicious activities and produces reports to a management station. 
+\item [\textbf{Technical Approach}] 
 
-\item[\textbf{Basic Idea}] The program implements three functions: The \textit{initialpopulation} generates the variants by using the mutual operators based on the input program and test cases. The \textit{fitness function} evaluates each variants created and chooses the best amongst them and the \textit{GenProg} iterates by selecting high fitness individuals, which are selected for continuous evolutions for the next.
+The technical approach used in this paper is genetic programming. Genetic programming (GP) is an evolutionary algorithm-based methodology which uses a set of instructions and a fitness function to measure how well a computer has performed a task.
 
-\item[\textbf{Summary of approach}]
+\item[\textbf{Basic Idea}]
+
+The basic idea is that the IDS detects an anomaly in the request and if there is an anomaly then there is an attack  and the system is stopped. Then the GenProg is invoked which takes input of the negative test case, positive test cases, and the defect and generates a variant. The variant is the automatic recovery which contains the program requirement. The variant which has the highest fitness function is considered to be the best.
+
+A negative test case is a test case which contains the bug, if there exists a bug.
+
+genetic program repair technique "GenProg", which uses existing test cases to automatically generate repairs.The GenProg takes an input of the set of positive test cases and the defect, searches for a program variant which retains the functionality, evaluates each variant with a user-defined fitness function and individuals with high fitness are selected for continued evolution.The variant which passes all the test cases are taken into consideration for generating the automatic final repair.
+
+\item[\textbf{Summary of approach}] The approach implements three functions: The \textit{initialpopulation} generates the variants by using the mutual operators based on the input program and test cases. The \textit{fitness function} evaluates each variants created and chooses the best amongst them and the \textit{GenProg} iterates by selecting high fitness individuals, which are selected for continuous evolutions for the next.
+
+
 The technical approach used in this paper by the author can be classified in four stages:-
 \textit{Program Representation:}Each variant is represented by a pair of an abstract syntax tree   (AST)and a weighted path. The abstract syntax tree contains all the statements of the program and a weighted path contains all the statements in the program that has been assigned a weight based on the occurrence of the statement the test cases.\textit{Selection and Genetic Operators:}genProg discards individuals with fitness 0 (variants that do not compile or that pass no test cases) and places the remainder in Viable. It then uses a selection strategy to select pop size/2 members of a new generation from the previous iteration.\textit{Fitness function:}the fitness function evaluates the acceptability of a program variant. The fitness function mentioned in this paper, encodes software requirements at the test case level: negative test cases encode the fault to be repaired, while positive test cases encode functionality that cannot be sacrificed.\textit{Repair Minimization:}
 the search terminates successfully when GP discovers a primary repair that passes all test cases. Due to randomness in the mutation and crossover algorithms, the primary repair typically contains at least an order-of-magnitude more changes than are necessary to repair the program, rendering the repairs difficult to inspect for correctness.
@@ -163,61 +173,110 @@ The GP search space focuses genetic operations along a weighted path and takes a
 
 \item[\textbf{Disadvantages}] GenProg relies on test cases to encode both an error to repair and important functionality. GenProg cannot repair race conditions as it is difficult to encode an error using test cases for non-deterministic properties.
 
-
 \end{compactitem}
 
-
-
+\section{QVM}\label{QVM}
 \begin{compactitem}
 
-\item[\textbf{Title}]Exception Handling for Repair in Service-Based Processes
+\item[\textbf{Title}]QVM: An Efficient Runtime for Detecting Defects in Deployed Systems
 
-\item[\textbf{Author}]Friedrich et al.
+\item[\textbf{Author}]
+Mathew Arnold, Martin Vechev and Eran Yahav
 
 \item[\textbf{Reference}] 
 
-\cite{friedrich2010exception}
+\cite{mathew_arnold_qvm:_2008}
 
-\item[\textbf{Year}] 2010
+\item[\textbf{Year}] 2008
 
 \item[\textbf{Application Domain}]
-Service-based processes
+Web services and QoS-based and AOP
 
-\item[\textbf{Self-Healing steps}] The self healing loop is: design, diagnosis, repair
+\item[\textbf{Self-Healing steps}] Self-healing steps involved the following:
 
+(i)	Finding Bugs.
+The QVM monitors the correctness properties and resource leakage. The report for the bug includes the information about the allocation of the object, the object’s last state and the method invoking the object.
 
-Diagnosis: This phase determines where the error took place and what the cause of the error is. The knowledge about the fault is crucial for repairing the process and for minimizing the need for re executing parts of the process. Such knowledge is obtained through diagnosis,  using a diagnosis tool.
+(ii)	Diagnosing the Cause.
+The QVM provides debug information in form of type state history. For every invocation, the invocation history collects the information about the context in which the object was invoked. Hence, with the object-centric sampling, the detailed debug information is collected with low overhead.
 
-\item[\textbf{Technical Approach}]Model based approach
+(iii)	Developing a Fix.
+QVM heap assertion leverages and checks the object for its sharing. This is done in the testing phase for fixing the problem and removal before the deployment. The problem is healed up with repetitive application of the method until the reported leak does not occur.    
 
-\item[\textbf{Basic Idea}] In this paper, we design repair strategies based on the structure of the process by using model-based approach. The repair plan / actions is defined in the process model. The approach is based on the concept of self-healing system. In this approach, the repair information is associated with a process at design time and the repair plans are generated at runtime.
+\item[\textbf{Technical Approach}]
 
-\item[\textbf{Summary of approach}]
+The QVM extends the VM execution engine with three main components: 
+(i)	QVM interface
+(ii)Overhead Manager and
+(iii)QVM Clients 
 
-\item[\textbf{Fault Types}]The two types of faults that can be healed in this case are: 
+\item[\textbf{Basic Idea}]  
 
-\item[\textbf{Failure Types}]The two types of faults that has been healed in this case are:
+The study is on the usability of interactive applications running with QVM. The QVM detects defects by continuously monitoring the execution of the application by checking typestate safety properties, Java assertions, and heap properties pertaining to ownership. It also provides a balanced trade-off between the cost of the monitoring process and the maintenance of sufficient accuracy for detecting defects.
 
-An incorrect item code with an item name. The system send a wrong shipping note to warehouse, which therefore does not process the order and the package correctly.
+\item[\textbf{Summary of approach}] Quality Virtual Machine (QVM) is a runtime environment that uses the technology and infrastructure available in a virtual machine (VM) to improve the software quality. It provides an interface that allows software monitoring clients to be executed in a controlled overhead. The goal of the system is to provide a solution having performance with low overhead and to provide maximal separation of the clients from the underlying architecture. The QVM is three tier architecture having clients at the abstract level, QVM Interface as the middleware bridging the gap among the clients and QVM’s working at the core. The input to the QVM is a user-defined overhead estimation value and the bug log report. At the initial stage the application program is connected with the QVM clients that play a major role for evaluating the performance of the system. The type state, heap probes and assertions the major clients of QVM that generate the violation report for the QVM. 
 
+The QVM Interface (QVMI) performs three different tasks as 
+1. Filtering. Filtering is done for addressing the callback requests irrespective of the working of the system. The VM provides dynamic optimization techniques to achieve an efficient implementation of the sampled profile.
 
-When the are house receives the item description from the SHOP through the FORWARDORDER operation, it discovers that the order goods, the shipping note and the package are inconsistent with respect to the goals provided by the supplier and thus raised failure 1.
+2.	Property Guided Sampling. Sampling is a key mechanism for QVM that reduces the overhead. It provides dynamic analysis of the objects with its associate’s properties. With the typestate properties, the relation between the events for same object needs to be maintained.
+
+3.	Object Centric Sampling.     At the object instances level, the objects are tracked with profile events with the objects. The tracking of objects is done at allocation time. The object sampling produces meaningful results without destroying properties associated with objects.
+
+The OverHead Manager (OHM) known as the core of the system does the estimation of the overhead by specifying the overhead budget 5-10 \% of the deployed system. For a given overhead budget, the QVM accumulates much of information about the object. The information gathering is done by three strategies 
+(i)	Monitoring. Monitoring is done by assigning a timer to the QVMI entry, exist calls and time spent on the clients. For this the QVM deploys accurate timers so that time working and existing of the threads can be tracked properly.
+
+(ii) Sampling. With the Samplimg method QVM maintains a log for each event. A sample counter and sampleCounter Reset are added to the code for keeping the track of the event execution and abort. For severe performance degradation the QVM supports the notion of an emergency shutdown.
+
+(iii)	Controlling. The Overhead Controller checks the QVM overhead and adjusts the sampling frequencies. The frequencies are adjusted as the budget increases or decreases periodically. Even a overhead beyond the budget can cause an emergency shutdown.
+However, with early tracking of the objects, early resource release can be done for increasing the performance. 
+
+\begin{figure}[H]
+\center
+\includegraphics[width=5in]{img/qvm}
+\caption{Overall architecture of QVM.}
+\end{figure}
+
+\item[\textbf{Fault Types}]
+(i)	Typestates assertions
+(ii)	Resource Leakage
+(iii)	Java assertions
+ 
+\item[\textbf{Failure Types}]
+
+(i)	Performance Degradation
 
 \item[\textbf{Input data}] 
 
+(ii)	Overhead estimation
+(iii)	Bug log file
+
+
 \item[\textbf{Recovery actions}]
 
+(i)	Resource utilization
+(ii)Leverage heap probe 
+
+
 \item[\textbf{Advantages}] 
-Repair follows the same logic as the original process and different repairs can be proposed for different causes of failures, with the goal of minimizing both the amount of work to be redone in the process and the compensation and/or reexecution of external services.
+
+(i)	High-performance and low overhead
+(ii)	Maximal separation of analysis clients from virtual machine (VM)
+(iii)	Runtime access for the clients allows for utilizing information
+(iv)	The access to dynamic optimizer (JIT) ensures to critical code paths are well optimized
+(v)	The efficient dynamic updating of VM can be upgraded with the application of the advance techniques such as code patching and on-stack replacement.  
+(vi)	The deployment becomes easier as the required features are installed in the VM.
+
 
 \item[\textbf{Disadvantages}] 
 
-
+(i)	Quality service implementation on VM makes them non-portable
+(ii)	The users of the system are meant specific to VM version
 
 \item[\textbf{Case study}] 
 
-
-The approach has been used on a food shop selling company, which sells products online using a service-oriented architecture (SDA) infrastructure with four services.
+(i)	The QVM run on eclipse
+(ii)	The QVM run on development version of a large scale IBM product. 
 
 \end{compactitem}
 
