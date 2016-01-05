@@ -2,63 +2,140 @@
 To this class belong software systems that are built on top of a technical
 software platform by composing components developed by actors both internal and
 external.
-                                               	
-\begin{itemize}
-\item IDEs: 
-\begin{itemize}
-  \item Eclipse Ecosystem: The Eclipse ecosystem is the universe of Eclipse
-  plugins together with the developers of these plugins. All different Eclipse plugins rely on a common underlying architecture, platform and set of libraries without which they are unable to function correctly. The community of plugin developers therefore shares the common goal of improving a complete integrated software development environment. Bug example:
-  \begin{itemize}
-    \item Description: Bugzilla queries gone after moving from Eclipse 3.5 to
-    3.5.1. 
-    \item Link: https://bugs.eclipse.org/bugs/show\_bug.cgi?id=291334
-    \item Root cause: ExtensionEventDispatcherJob sets a mutually exclusive rule on the
-    thread then initializes tasks.ui which in turn tries to set a conflicting rule.
-    \item Status: Postponed
-  \end{itemize}
-\end{itemize}
-               
-\item Programming Language Community: 
-\begin{itemize}
-  \item The CRAN Ecosystem (cran.r-project.org): The GNU R community shares the
-  goal of creating a statistical computing environment. It achieves this through
-  the Comprehensive R Archive Network (CRAN), a developer-centric ecosystem in which each community member can contribute packages implementing specific statistical analysis functions and visualization tools. A particularity of this ecosystem is that the community is mainly composed of end-users, that do not necessarily have a lot of development experience. CRAN has been experiencing maintainability problems due to the superlinearly growing number of packages and the limitations of R’s dependency versioning system. Bug example:
-  \begin{itemize}
-    \item Description: qchisq produced NaN when df=0.00991. 
-    \item Link: https://bugs.r-project.org/bugzilla3/show\_bug.cgi?id=14710
-    \item Root cause: The replacement
-    pgamma algorithm used from R 2.1.0 has an inadequate design. A solution is
-    to revert where needed to the normal approximation used in R 2.0.0 
-    \item Status: Closed.
-  \end{itemize}
-\end{itemize}                                        	
-\item Open source software foundation: 
-\begin{itemize}
-  \item Apache ecosystem: It is composed of 195 software projects
-spread in 23 different categories (eg, big-data, FTP, mobile, library, testing, XML) and
-developed by using a total of 29 programming languages. Bug example:
-   \begin{itemize}
-     \item Description: AreaReference(String) has been deprecated. This makes
-     AreaPtg(String), Area3DPtg(String, externIdx), Area3DPxg(SheetIdentifier,
-     String), Area3DPxg(int, SheetIdentifier, String) deprecated constructors.
-    \item Link: https://bz.apache.org/bugzilla/show\_bug.cgi?id=58331
-    \item Root cause: AreaReference(String) has been deprecated from bug 56328.
-    \item Status: Closed.
-    \end{itemize} 
-  \item Mozilla Bug example:
-   \begin{itemize}
-     \item Description: Browser Window turns black after pressing Press STRG
-     + TAB
-    \item Link: https://bugzilla.mozilla.org/show\_bug.cgi?id=660160\#c14
-    \item Root cause:  Fox Tab incompatibility. This add-o was affected by the
-    fix in bug 637204.
-    \item Status: Closed.
-    \end{itemize} 
-\end{itemize}          
 
-\item Mobile App Store: 
 \begin{itemize}
-  \item iOS
-  \item Android
-\end{itemize}          
+  \item IDEs:
+  \begin{itemize}
+    \item Eclipse Ecosystem: The Eclipse ecosystem is the universe of Eclipse
+    plugins together with the developers of these plugins. All different Eclipse plugins rely on a common underlying architecture, platform and set of libraries without which they are unable to function correctly. The community of plugin developers therefore shares the common goal of improving a complete integrated software development environment. Bug example:
+    \begin{itemize}
+      \item Description: Bugzilla queries gone after moving from Eclipse 3.5 to
+      3.5.1.
+      \item Link: https://bugs.eclipse.org/bugs/show\_bug.cgi?id=291334
+      \item Root cause: ExtensionEventDispatcherJob sets a mutually exclusive rule on the
+      thread then initializes tasks.ui which in turn tries to set a conflicting rule.
+      \item Status: Postponed
+    \end{itemize}
+  \end{itemize}
+  
+  \item Programming Language Community:
+  \begin{itemize}
+    \item The CRAN Ecosystem (cran.r-project.org): The GNU R community shares the
+    goal of creating a statistical computing environment. It achieves this through
+    the Comprehensive R Archive Network (CRAN), a developer-centric ecosystem in which each community member can contribute packages implementing specific statistical analysis functions and visualization tools. A particularity of this ecosystem is that the community is mainly composed of end-users, that do not necessarily have a lot of development experience. CRAN has been experiencing maintainability problems due to the superlinearly growing number of packages and the limitations of R’s dependency versioning system. Bug example:
+    \begin{itemize}
+      \item Description: qchisq produced NaN when df=0.00991.
+      \item Link: https://bugs.r-project.org/bugzilla3/show\_bug.cgi?id=14710
+      \item Root cause: The replacement
+      pgamma algorithm used from R 2.1.0 has an inadequate design. A solution is
+      to revert where needed to the normal approximation used in R 2.0.0
+      \item Status: Closed.
+    \end{itemize}
+  \end{itemize}
+  \item Open source software foundation:
+  \begin{itemize}
+    \item Apache ecosystem: It is composed of 195 software projects
+    spread in 23 different categories (eg, big-data, FTP, mobile, library, testing, XML) and
+    developed by using a total of 29 programming languages. Bug example:
+    \begin{itemize}
+      \item Description: AreaReference(String) has been deprecated. This makes
+      AreaPtg(String), Area3DPtg(String, externIdx), Area3DPxg(SheetIdentifier,
+      String), Area3DPxg(int, SheetIdentifier, String) deprecated constructors.
+      \item Link: https://bz.apache.org/bugzilla/show\_bug.cgi?id=58331
+      \item Root cause: AreaReference(String) has been deprecated from bug 56328.
+      \item Status: Closed.
+    \end{itemize}
+    \item Mozilla Bug example:
+    \begin{itemize}
+      \item Description: Browser Window turns black after pressing Press STRG
+      + TAB
+      \item Link: https://bugzilla.mozilla.org/show\_bug.cgi?id=660160\#c14
+      \item Root cause:  Fox Tab incompatibility. This add-o was affected by the
+      fix in bug 637204.
+      \item Status: Closed.
+    \end{itemize}
+  \end{itemize}
+  
+  \item Mobile App Store:
+  \begin{itemize}
+    \item Android: It is an open source Linux-based operating system owned by
+    Google and designed for touchscreen mobile devices such as smart-phones and
+    tablet computers. Google supports mobile app development with
+    its own operating system and associated Application
+    Programming Interfaces (APIs). These APIs give developers
+    access to features like location services, wi-fi connections,
+    bluetooth functionality, and graphics. Bug example:
+    \begin{itemize}
+      \item Description: Without warning, upon loading activity or fragment
+      containing multiple map fragments (or a little later, upon trying to
+      interact with the map fragments),  the app will crash.
+      
+      
+      \item Link: https://code.google.com/p/gmaps-api-issues/issues/detail?id=5100
+      \item Root cause:  The Google Maps API is broken on Android 5.
+      \item Status: Closed.
+    \end{itemize}
+  \end{itemize}
+  
 \end{itemize}
+\section{Studies on Software Ecosystem} 
+
+Dig and Johnson \cite{dig_role_2005} investigated the evolution of three
+frameworks including Eclipse and the log4j library. They found out that most
+(from 81\% to 97\%) of the application-breaking changes were comprised
+by structural, behavior-preserving transformations (refactorings).
+
+In a large scale study of the Smalltalk development communities, Robbes et al.
+\cite{robbes_how_2012} found that only 14\% of deprecated methods produce
+non-trivial API change effects in at least one client-side project; however,
+these effects vary greatly in magnitude. On average, a single API deprecation
+resulted in 5 broken projects, while the largest caused 79 projects
+and 132 packages to break.
+
+Kim et al. \cite{kim_empirical_2011} investigate the relationship between API
+refactorings and bugs and find the bug fix rate is higher after API-level refactorings than the preceding
+period, e.g., from 26.1\% to 30.3\% when examining 5 revisions
+before and after API-level refactorings in Eclipse JDT. They also found that a
+fix rate increase is often caused by mistakes in applying refactorings and
+behavior modifying edits together.
+
+
+An exploratory study of project inter-dependencies in the 
+Apache ecosystem \cite{bavota_evolution_2013} shows that:
+\begin{itemize}
+  \item client projects tend to upgrade their dependencies when substantial changes in the projects they depend on are released,
+including bug-fixing activities
+\item the proportion
+of source code of client projects impacted by changes in
+the projects they depend on is quite limited, around 5\%.
+However, there are specific dependencies, generally toward frameworks/libraries
+(e.g.  Commons Logging) offering very wide, crosscutting services, that could strongly
+impact the client project source code when a dependency is upgraded
+\item 
+\end{itemize} 
+
+
+An empirical study of API stability and adoption in the android ecosystem
+\cite{mcdonnell_empirical_2013} shows that:
+\begin{itemize}
+  \item Android APIs are evolving
+at the rate of 115 API updates per month on average.
+APIs related to hardware, user interface, and web are
+evolving much faster than others.
+  \item Around 25\% of all method and field references in the
+client code use the Android APIs. However, application
+developers are hesitant to adopt new APIs. On average,
+28\% of Android API calls are lagging behind the latest
+released version. 22\% of outdated APIs eventually
+upgrade to use newer APIs; nevertheless it takes a
+considerable amount of time, 14 months, on average
+\item Fast evolving APIs are used
+more by clients than slow evolving APIs. However, the pace of client update is
+slower for fast evolving APIs.
+Files which are changed to use new APIs are more
+defect prone than files without API usage adaptation.
+This may imply that developers avoid frequent upgrades
+to unstable or rapidly evolving APIs.
+\end{itemize}
+
+
