@@ -1,11 +1,10 @@
 %!TEX root =  main.tex
-\appendix
+%\appendix
 \chapter{Detailed List of Self-Healing Approaches}
 \label{ap:approches}
+This appendix report describes the different self-healing approaches which has been used by authors  \ldots 
 
-This appendix reports \ldots 
-
-\section{Brun's Self-Adapting Reliability} \label{ap:BurnSelf}
+\section{Brun's self-adapting reliability} \label{ap:BurnSelf}
 \begin{compactitem}
 \item[\textbf{Title}]Self-Adapting Reliability in Distributed Software Systems
 \item[\textbf{Author}] 
@@ -190,14 +189,14 @@ Mathew Arnold, Martin Vechev and Eran Yahav
 \item[\textbf{Year}] 2008
 
 \item[\textbf{Application Domain}]
-Web services and QoS-based and AOP
+Web services
 
 \item[\textbf{Self-Healing steps}] Self-healing steps involved the following:
 
 (i)	Finding Bugs.
 The QVM monitors the correctness properties and resource leakage. The report for the bug includes the information about the allocation of the object, the object’s last state and the method invoking the object.
 
-(ii)	Diagnosing the Cause.
+(ii) Diagnosing the Cause.
 The QVM provides debug information in form of type state history. For every invocation, the invocation history collects the information about the context in which the object was invoked. Hence, with the object-centric sampling, the detailed debug information is collected with low overhead.
 
 (iii)	Developing a Fix.
@@ -223,10 +222,9 @@ The QVM Interface (QVMI) performs three different tasks as
 
 3.	Object Centric Sampling.     At the object instances level, the objects are tracked with profile events with the objects. The tracking of objects is done at allocation time. The object sampling produces meaningful results without destroying properties associated with objects.
 
-The OverHead Manager (OHM) known as the core of the system does the estimation of the overhead by specifying the overhead budget 5-10 \% of the deployed system. For a given overhead budget, the QVM accumulates much of information about the object. The information gathering is done by three strategies 
-(i)	Monitoring. Monitoring is done by assigning a timer to the QVMI entry, exist calls and time spent on the clients. For this the QVM deploys accurate timers so that time working and existing of the threads can be tracked properly.
+The OverHead Manager (OHM) known as the core of the system does the estimation of the overhead by specifying the overhead budget 5-10 \% of the deployed system. For a given overhead budget, the QVM accumulates much of information about the object. The information gathering is done by three strategies. (i)	Monitoring. Monitoring is done by assigning a timer to the QVMI entry, exist calls and time spent on the clients. For this the QVM deploys accurate timers so that time working and existing of the threads can be tracked properly.
 
-(ii) Sampling. With the Samplimg method QVM maintains a log for each event. A sample counter and sampleCounter Reset are added to the code for keeping the track of the event execution and abort. For severe performance degradation the QVM supports the notion of an emergency shutdown.
+(ii) Sampling. With the Sampling method QVM maintains a log for each event. A sample counter and sampleCounter Reset are added to the code for keeping the track of the event execution and abort. For severe performance degradation the QVM supports the notion of an emergency shutdown.
 
 (iii)	Controlling. The Overhead Controller checks the QVM overhead and adjusts the sampling frequencies. The frequencies are adjusted as the budget increases or decreases periodically. Even a overhead beyond the budget can cause an emergency shutdown.
 However, with early tracking of the objects, early resource release can be done for increasing the performance. 
@@ -238,7 +236,7 @@ However, with early tracking of the objects, early resource release can be done 
 \end{figure}
 
 \item[\textbf{Fault Types}]
-(i)	Typestates assertions
+(i)	    Typestates assertions
 (ii)	Resource Leakage
 (iii)	Java assertions
  
@@ -270,7 +268,7 @@ However, with early tracking of the objects, early resource release can be done 
 
 \item[\textbf{Disadvantages}] 
 
-(i)	Quality service implementation on VM makes them non-portable
+(i)	    Quality service implementation on VM makes them non-portable
 (ii)	The users of the system are meant specific to VM version
 
 \item[\textbf{Case study}] 
@@ -281,5 +279,118 @@ However, with early tracking of the objects, early resource release can be done 
 \end{compactitem}
 
 
+
+
+
+\section{MAPE-K}\label{MAPE-K}
+\begin{compactitem}
+
+\item[\textbf{Title}]MAPE-K Formal Templates to Rigorously Design Behaviors for Self-Adaptive Systems
+
+\item[\textbf{Author}]Didac Gil De La Iglesia, Danny Weyns
+
+\item[\textbf{Reference}] 
+
+\cite{didac_iglesia_mape-k:_2015}
+
+\item[\textbf{Year}] 2015
+
+\item[\textbf{Application Domain}]Distributed Systems 
+
+Self Adaptive systems that are worked as example are
+
+(i) Mobile learning (ii) Robotics
+
+\item[\textbf{Self-Healing steps}] Self-Healing steps   involved the following:
+
+(i) Monitor (ii) Analyze (iii) Plan (iv) Execute 
+(v) With Knowledge
+
+\item[\textbf{Technical Approach}]
+The MAPE-K template is deployed in the system comprise the behaviour specification templates and property specification template specifying the property behaviours formal verification.
+
+(i) Behaviour specification templates- Timed Automata
+
+(ii) Property specification template – Timed Computational Tree Logic
+
+\item[\textbf{Basic Idea}]  
+The basic idea is to develop a self adaptive system that would deal with the concerned domain and adapt to the structure and modify their behaviour at run time with little or no human intervention. This will heal the managed system when a fault is detected.
+
+
+\item[\textbf{Summary of approach}] In the dynamically changing system, prediction of availability of resources and detection of fault has become difficult. To address the problem self-adaptive systems are developed. The self-adaptive systems can reconfigure their structure and modify their behaviour at runtime with a little or no human intervention. The system consists of a managed system and a feedback loop. The managed system deals with the concerned domain users and feedback loop deals with adaptation of the managed system.
+
+The feedback loop consists of five phases together known as MAPE-K as: (1) Knowledge (2) Monitor (3) Analyze (4) Plan (5) Execute
+
+The MAPE-K template comprises of
+
+(i) Behavioural Specification template for modelling different components of MAPE-K and their interactions. The Timed Automata (TA) with clock variable for state and transition between the states representing actions is deployed.
+
+(ii) Property Specification template for specifying required properties of the adaptation behaviours enabling formal verification of the behaviours. A Timed Computational Tree Logic (TCTL) is deployed with extended clock variable that allows specification of properties such as reachability, liveness and safety.With the distributed self-adaptive system multiple local managed systems are deployed at nodes and have MAPE-K feedback loops. The basic focus of the self-adaptation deals with robustness and openness of the system that is, addition and deletion of resources can be done as required and self-healing is done when system failure occurs. To elaborate the MAPE-K feedback loop a Mobile Learning System application is explained where the application is to learn the geometry concepts with GPS enabled mobile devices. The basic resources in this domain are GPS services.
+
+The MAPE-K feedback loop is detailed as follows:
+
+(i) Knowledge- Each component in the MAPE is dependent on the knowledge of the system. The knowledge of the system has four categories. 
+
+a. Managed System Knowledge- this part of knowledge comprises of the system knowledge as number of nodes, number of resources, type of resources, and quality of resources. 
+
+b. Environment Knowledge- the knowledge is about the environment of domain where the system is deployed.
+
+c. Concern Knowledge- the knowledge is to realize the requirement of resources to fulfil the goals of self adaptive systems.
+
+d. Adaptation Knowledge- the knowledge to represent the working and behaviour of the system. The indirection synchronization of behaviour is flagged by the system.(ii) Monitor
+
+Monitor collects the data through searching from the managed system and the environment to update Knowledge. Before updating the pre-processing is done with methods such as normalization, filtering and aggregation. The monitor performs the task of identifying the failure and resource request and updating the knowledge for analyzing 
+the behaviour. Hence the monitor behaviour performs triggering, collecting the related information, pre-processing the data, working data, and call to analyze.
+
+(iii) Analyze
+
+Analyze is done to determine is the adaptation actions required based on the information from the monitor and the environment of the system. The Analyze behaviour has three 
+primary states: 
+
+a. Satisfied- the managed system has sufficient number of resources it requires to achieve the goal. 
+
+b. Under-satisfied- the system lacks the resources for achieving the goal.
+
+c. Over-satisfied- the system has redundant number of resources.
+
+Hence, the Analyze phase performs the triggering, data collection, analysis and call to Plan phase.(iv) Plan
+
+The planning mitigates actions to adapt the managed system when the resources are required. Depending on the analyze phase the planning is done. No adaptation plan is required when system is satisfied. The resources need to be added when the system is underestimated. The resources are to be released when the system is over satisfied.(v) Execute
+The Execute behaviour is responsible for executing the adaptation actions of the generated plans. If the system is not ready, the behaviour performs the preparation task 
+before executing the actions for addition of the resources to the system. The preparation tasks include locking of certain resources keeping the system in safe state. After the execution is complete, the plan is checked for its completion. If some actions remain pending, the process is repeated for next actions to the managed system.Apart from the behavioural specifications, the Property verification templates are added to the system with the help of TCTL. The template has three groups as:
+
+(i) Adaptation Goal specification- properties related to realization of adaptation goals by MAPE-K feedback loop. (ii) Intra-Behaviour Specification Template-specifies properties of internal MAPE component behaviour. (iii) Intre-Behaviour Specification Template-specifies properties for interaction between multiple behaviour of MAPE-K loop.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=5in]{img/pst}
+\caption{Groups of property specification template.}
+\end{figure}
+
+\item[\textbf{Fault Types}]
+(i) System breakdown (ii) System deadlock
+\item[\textbf{Failure Types}]
+
+Failure Types (i) Shortage of resources
+\item[\textbf{Input data}] 
+(i) Nodes- Number of nodes (ii) NRes-Number of resources
+(iii) availableResources[NRes]- number of available resources
+
+
+\item[\textbf{Recovery actions}]
+The plan and execute phase performs the task of recovery as MAPE performs the post execution tasks with the postAction () function. The requirement of resources or release of resources changes the environment of the system. With PostExecutionAdd() function the required resources are added to the system. If more actions are Pending the system checks for PrepareAdd state and repeats the process to execute the actions so the system does not waits for and can recover from shortage of resources, making the resources available.
+
+
+\item[\textbf{Advantages}] 
+(i) Self-adaptive systems deals openness- the system can add and delete resources such as nodes, subsystems and components as required.
+(ii) The self-healing process recovers from the system failure.
+
+\item[\textbf{Disadvantages}] 
+(i) The Timed Automata (TA) is modelling language supporting modelling for behavioural aspects of design. Therefore to model the message and communication protocols used in distributed systems can be difficult to model with the language of primitives of timed-automata.
+
+\item[\textbf{Case study}] 
+(i) Smart homes (ii) Security system (iii) Vehicular traffic systems
+
+\end{compactitem}
 
 
