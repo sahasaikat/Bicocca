@@ -394,3 +394,80 @@ The plan and execute phase performs the task of recovery as MAPE performs the po
 \end{compactitem}
 
 
+
+\section{Azim's self-healing smartphone software}\label{AzimSelf}
+\begin{compactitem}
+
+\item[\textbf{Title}] Towards Self-healing Smartphone Software via Automated Patching
+
+\item[\textbf{Author}]
+Tanzirul Azim, Iulian Neamtiu and Lisa Marvel
+
+\item[\textbf{Reference}] 
+
+\cite{tanzirul_azim_smartphone:_2014}
+
+\item[\textbf{Year}] 2014
+
+\item[\textbf{Application Domain}]
+Mobile applications for an android device
+
+\item[\textbf{Self-Healing steps}] Self-healing steps involved are monitoring, detecting and recovering.
+
+\item[\textbf{Technical Approach}]
+
+Static analysis, dynamic analysis and bytecode rewriting
+
+\item[\textbf{Basic Idea}]  
+In this paper the basic idea is to introduce a methodology that uses automatic error detection and patch development towards giving a self-healing abilities to android applications. The author utilizes dynamic analysis to identify crash points, static analysis to recognize rollback points, and binary rewriting to seal of routines associated with crash points so that applications can keep on working even after an accident, with restricted functionality. The author tested the framework in detecting and fixing bugs in several popular android apps for instance facebook mobile, NPR news and K-9 mail. 
+
+\item[\textbf{Summary of approach}] 
+The summary of approach is summarised below:
+
+\begin{figure}[H]
+\center
+\includegraphics[width=5in]{img/smartphone_2014}
+\caption{System architecture}
+\end{figure}
+
+(i)Model construction and roll-back point identification. First, the author derives a model (State activity transition graph) from the app via static analysis on the app bytecode, where nodes represents GUI app screen and edges represents transition between screens. The SATG graph is constructed with an open-source tool Automatic Android App Explorer (A3E), which is used for systematically exploring android applications running on phone. A3E supports sensors and does not require access to source code. The A3E keeps a track of monitoring, profiling, information flow tracking of the application. The graph identifies the rollback points (safe and unsafe points in the app). Safe points will be roll-backed and unsafe points will be sealed off. The model includes rollback (resume) points where the app will be driven when recovering from a fault.
+
+(ii)Detection. Second, when the app is executed the Android Dalvik virtual machine constantly monitors the app via dynamic analysis and when a fault occurs the VM reports the potential cause of the error and the associated method with the fault in the log file. To implement monitoring, the author adds a sensor module, listener in the Dalvik VM's logging system. After analysing the log, VM finds that the closest method associated with the crash. This concludes the online fault detection phase. 
+
+(iii)Recovery. Once a failure is detected the application rollbacks and resume the app. The rollback point depends on whether the fault is transient or persistent. In case of transient fault (temporary error, viz. network failures) the rollback point is the same point where the crash has been encountered. In case of persistent fault (permanent error, viz. unhandled exception), a patch is created to seal of the functionality which is responsible for the crash. The patch is created via dynamic analysis and in this case the rollback is the earlier node in the SATG and the author uses bytecode rewriting to seal of the faulty method in the faulty SATG node. Bytecode rewriting was done by the author using the smali Dalvik assembler/disassembler. In both types of faults, the author used the systematic exploration component of A3E, to drive the execution, so we could reliably drive the app into a state where it crashes.
+
+\item[\textbf{Fault Types}]
+
+Transient and persistent faults
+(i)Transient faults are temporary faults such as unexpected shared memory deletion by the Android OS, network unavailability, background services shutdown due to low energy and resource shortage. When failures are caused by this bugs, the application is automatically resumed to the normal behaviour after the rollback without rewriting the bytecode.
+(ii)Persistent faults are permanent errors for instance unhandled exceptions, semantic errors and inter process communication error. When failures are caused by this bugs, the application method bytecode needs to be rewritten after the rollback to resume the application to its normal behaviour.
+ 
+\item[\textbf{Failure Types}]
+Performance failure.
+
+\item[\textbf{Input data}] 
+
+Bug log file.
+
+\item[\textbf{Recovery actions}]
+
+(i)In case of transient faults the recovery action is the rollback point from the node where the crash has been encountered.
+(ii)In case of persistent faults the recovery action is the rollback point from the nearest node where the crash has been encountered.
+
+\item[\textbf{Advantages}] 
+
+(i)Low overhead cost as the model extraction is done only once for detecting the rollback points.
+(ii)The total self-healing time is low as in case of transient fault only a rollback is done to resume the app to the normal behaviour without rewriting the bytecode.
+
+
+\item[\textbf{Disadvantages}] 
+
+(i)Mobile applications are GUI centric. In the current design of the prototype, the GUI states (previously entered data) are lost whenever there is a rollback action. This has to be redesigned in the future work by designing more sophisticated ways for fault detection and rollback action.
+(ii)The current approach used in the prototype is more reactive rather than proactive. The bug is detected once the application has already crashed. In future, we have to design the prototype such that the bug can be detected and fixed before leading to a full-fledged crash.
+(iii)In the current approach the smartphone has been connected to a computer. This was necessary for running A3E (Automatic Android App Explorer), smali, and initiating rollback/restart. However, in the future the approach will run solely on the phone, without using any peripheral device.
+
+
+\item[\textbf{Case study}] 
+Android apps running on Motorola Droid Bionic phones.
+
+\end{compactitem}
