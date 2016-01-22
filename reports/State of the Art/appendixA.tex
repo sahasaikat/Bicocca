@@ -186,10 +186,10 @@ Mathew Arnold, Martin Vechev and Eran Yahav
 
 \cite{mathew_arnold_qvm:_2008}
 
-\item[\textbf{Year}] 2008
+\item[\textbf{Year}] 2011
 
-\item[\textbf{Application Domain}]
-Web services
+\item[\textbf{Application Domain}] Java application
+
 
 \item[\textbf{Self-Healing steps}] Self-healing steps involved the following:
 
@@ -273,15 +273,10 @@ However, with early tracking of the objects, early resource release can be done 
 
 \item[\textbf{Case study}] 
 
-(i)	The QVM run on eclipse
-(ii)	The QVM run on development version of a large scale IBM product. 
+(i)	Azerus- A bit torrent client protocol.
+(ii) etrader (trading platform) (iii) feednread (newsfeed reader) (iv) goin (IM client) (v) ibm app1 (large scale product) (vi) ibm app2 (medium scale tool) (vii) jcommander (file manager) (viii) juploader (flickr upload tool) (ix) nomadpim (personal information manager) (x) rssowl (rss news reader) (xi) tvbrowser (tv program guide) (xii) tvla (program analysis framework) (xiii) virgoftp (FTP client). 
 
 \end{compactitem}
-
-
-
-
-
 \section{MAPE-K}\label{MAPE-K}
 \begin{compactitem}
 
@@ -301,7 +296,7 @@ Self Adaptive systems that are worked as example are
 
 (i) Mobile learning (ii) Robotics
 
-\item[\textbf{Self-Healing steps}] Self-Healing steps   involved the following:
+\item[\textbf{Self-Healing steps}] Self-healing steps   involved the following:
 
 (i) Monitor (ii) Analyze (iii) Plan (iv) Execute 
 (v) With Knowledge
@@ -392,18 +387,11 @@ The plan and execute phase performs the task of recovery as MAPE performs the po
 (i) Smart homes (ii) Security system (iii) Vehicular traffic systems
 
 \end{compactitem}
-
-
-
-\section{Azim's self-healing smartphone software}\label{AzimSelf}
+\section{Azim's selfhealing smartphone software}\label{AzimSelf}
 \begin{compactitem}
-
 \item[\textbf{Title}] Towards Self-healing Smartphone Software via Automated Patching
-
 \item[\textbf{Author}]
-Tanzirul Azim, Iulian Neamtiu and Lisa Marvel
-
-\item[\textbf{Reference}] 
+Tanzirul Azim, Iulian Neamtiu and Lisa Marvel\item[\textbf{Reference}] 
 
 \cite{tanzirul_azim_smartphone:_2014}
 
@@ -468,6 +456,172 @@ Bug log file.
 
 
 \item[\textbf{Case study}] 
-Android apps running on Motorola Droid Bionic phones.
+Android apps running on Motorola AnDroid Bionic phones.
+
+\end{compactitem}
+
+\section{Ding's selfhealing via mining historical issue repository}\label{DingSelf}
+\begin{compactitem}
+\item[\textbf{Title}] Healing online service systems via mining historical issue repositories
+\item[\textbf{Author}]
+Rui Ding, Qiang Fu, Jian-Guang Lou, Qingwei Lin, Dongmei Zhang, Jiajun Shen, Tao Xie
+Marvel\item[\textbf{Reference}] 
+
+\cite{ding_healing:_2012}
+
+\item[\textbf{Year}] 2012
+
+\item[\textbf{Application Domain}]
+Service based process
+
+\item[\textbf{Self-Healing steps}] Self-healing steps involved are monitoring, detecting, comparing and recovering.
+
+\item[\textbf{Technical Approach}] Concept analysis,  Contrast analysis and Rule based technique.
+
+\item[\textbf{Basic idea}] The basic idea of this paper is to store an transaction logs which contains the logs of each transactions and set up a signature from the transaction logs, store each of the healing actions connected with the signature in the historical repository. Once a new issue is generated a match is determined with the old issue and the respective healing actions is activated from the historical repository. The comparability between two issues is dictated by characterizing a similarity matrix.
+
+\item[\textbf{Summary of approach]The technical approach is consist of three parts: i)first is generation of signatures from the issue by contrast and concept analysis, ii)second is retrieval of historical issue from repository similar to the new issue based on the signature that has been already generated, iii)third we generate healing action based on the historical repository. The detailed description of the technical approach are summarized as follows:1) Signature generation is done to differentiate between highly- correlated events and weakly discriminating events. Highly-correlated events refers to the correlation of
+events’ occurrences which indicates invalid cookies and the weak-discrimination phenomenon refers to noisy events that appear relatively independent to the transaction status (e.g., antivirus timeout). The signature generation has two parts: 1.1) Concept analysis The concept analysis technique is used to group the highly-correlated events (events which indicate one type of symptoms) together by applying the concept lattice of formal concept analysis (fca). 1.2) Contrast analysis The first step of contrast analysis is to identify the fail and success transactions. The fail and success transactions are determined by defining a label and using a threshold value for instance if the https code >=500 and duration of each transaction >= 10 seconds, then the transaction is determined as failure or it is a success. Secondly, we calculate the positive correlation of the transactions that are highly correlated to the failed transactions. This is achieved by the formulae: 
+\begin{figure}[H]
+\center
+\includegraphics[width=5in]{img/fhr}
+\caption{Formulae to calculate the transactions with mutual information}
+\end{figure}where X and Y are random variables which determines the sampled transactions that belong to concept c and sampled transactions that belong to failure. We use the positive correlation part of the mutual information, ignoring the negative correlation events. The third step is, to exclude the noisy events i.e weakly discriminating events (for instance antivirus timeout) from the metric which has been obtained from the previous step.This is performed by using delta method. Transaction which satisfies the criteria are taken into consideration as the final signature of the events.The DMI is the weight of each term.The delta E which satisfies the given criteria are considered to be the signature of that issue.
+2. Similar-issue retrieval 
+Each issue is treated in the historical issue repository as one document, each signature as one term, and the corresponding delta mutual information (DMI) as the weight of each term. Each of the issues are treated as vectors. The similarity between two issue is determined by measuring the number of overlapping events between the two vectors.
+3. Healing suggestion adaptation The Healing action is stored as verb + target + location, where verb is the healing action, target is the healing source and event is the new issue.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=5in]{img/historicalissue}
+\caption{System architecture}
+\end{figure}
+\item[\textbf{Fault types}]
+\item[\textbf{Failure types}] Performance failure
+\item[\textbf{Input}] new issue
+\item[\textbf{Recovery action}] Set of healing actions predefined in the historical repository.Healing actions are stored in the predicate$<verb + target + location>$
+\item[\textbf{Advantages}] i) Reduces mean time to restore (MTTR) a failure, as the healing actions are priorly identified and restored in the historical repository.ii) Replaces manually healing action by an automated mining based approach. This is less time consuming and error prone.
+\item[\textbf{Disadvantages}]i) the healing actions are predefined by the developers. In certain cases, if any fault occurs whose actions are not mentioned in the historical repository, that might cause system failure or crash.
+\item[\textbf{Case study}] Deployed healing system in a production service, named ServiceX.
+\end{compactitem}
+\section{FUSION}\label{FUSION}
+\begin{compactitem}
+\item[\textbf{Title}]FUSION: A Framework for Engineering Self Tuning Self-Adaptive Software Systems
+\item[\textbf{Author}]Ahmed Elkhodary,  Naeem  Esfahani, Sam Malek\item[\textbf{Reference}] 
+\cite{elkhodary_fusion:_2012}
+
+\item[\textbf{Year}] 2010
+
+\item[\textbf{Application Domain}]Web services and QoS-based and AOP
+
+\item[\textbf{Self-Healing steps}] Self-Healing steps   Self-healing steps involved the following:
+(i) Detect 
+
+(ii) Plan
+
+(iii) Effect
+
+\item[\textbf{Technical Approach}]
+Technical Approach –Finite State Processes (FSP) and eXtensible Architecture Description Language (xADL)
+
+\item[\textbf{Basic Idea}]  Basic Idea The study is on FUSION, which is feature oriented system model that learns the impact of feature selection and feature interaction for satisfying the system goals. From the learning, it adapts the system from failure recover and fulfils user defined goals. 
+
+\item[\textbf{Summary of approach}] 
+A self-adaptive software system is capable of modifying itself at run-time to achieve certain 
+functional or QoS goals. However, development of such systems is challenging and requires foreseeing the changes in the environment, requirements and systems operational profile at design time. A framework FeatUre-oriented Self-adaptatION (FUSION) is developed which learns the 
+impact of feature selection and features interaction on the systems goals. This knowledge efficiently helps adapting the system to meet user-defined goals.Fusion is based on two important parameters that are:
+
+(i) Features-Based Adaptation
+
+(ii) Goals
+
+(i) Feature-based adaptation
+
+The basic unit of adaptation is feature. Features represent the capability of the system. It can be a functional feature or non-functional feature. A functional feature can be print functions and a non-functional feature can be authentication properties. The feature in a system makes use of two kinds of relationships such as dependency and mutual. A dependency relationship indicates that a feature requires presence of another feature. Whereas mutual exclusion implies that if one of the features is in mutual group is enabled the others must be disabled. The enabled features are represented by 1 and disabled features are represented by 0. 
+
+(ii) Goal
+
+A goal represents the user’s functional or QoS objectives for a system. It includes two parameters
+
+(i) Metric- measurable quantity obtained from running system (e.g. response time) 
+
+(ii) Utility- function to represent user’s preference for a particular metric.
+
+Fusion Model
+
+Fusion model has been designed in two parts, Fusion Learning Cycle and Fusion Adaptation Cycle.
+
+I. Fusion Learning Cycle
+Fusion discovers the changing environment of the system through learning. Learning establishes the 
+relationship between the features and metrics. Each relationship is represented as functions that 
+calculate the features and their interactions, results a metric value. Each function takes a feature selection as input and produces an estimated gain/loss value for the metric as output. There are two activities that populate and fine tunes the knowledge.
+
+a) Observe- Observe performs normalization of raw metric value that makes them suitable for 
+learning. And also test the accuracy of learned functions with the currently observed 
+collection of data. If the accuracy test fails, observe marks an indicator that either learning is 
+incomplete or new patterns of behaviour has emerged.
+
+b) Induce- From the collected information from Observe, Induce constructs functions that 
+estimate the proper feature for a metric. 
+
+i. Induce performs a significance test for determining the features that have significant 
+impact on the metric. This test helps in reducing the number of independent variables 
+that are considered for metric computation.
+
+ii. After the normalization of data and extraction of features with significance, relationships are derived.
+
+II. Fusion Adaptation Cycle
+
+From the learned knowledge the system is adapted in this step with the DETECT, PLAN and EFFECT. A major principle for adaptation strategy is - “If the system works (i.e., satisfies the user), do not change it; when it breaks, find the best fix for only the broken part.” 
+
+a. Detect- The detect determines the system goal violation. This is done by monitoring the utility 
+functions. The utility function returns zero to indicate the violation of goals when metric 
+value are unacceptable. It returns a positive value to indicate users preference for improvement when metrics satisfy. After the detection for goal violation is done the system initiates adaptation cycle.
+
+b. Plan- The Plan eliminates all the features having no significant impact on goal. These affected features are known as Shared Features. These shared features represent the adaptation 
+parameters. These features may also affect other goals, known as Conflicting Goals. To detect 
+the conflicts, the knowledge base is used by back-tracking the learned relationships. FUSION 
+generates an optimization problem with objective to find a selection of Shared Features that 
+maximizes the system’s overall utility for the Conflicting Goals.
+
+c. Effect-Once an optimal feature selection is determined, the Effect activity is initiated to make the system transition from the current feature selection to the new one. From three given paths such as enable, disable and swap mutually exclusive features, effect chooses path for new 
+feature selection.
+\item[\textbf{Fault Types}](i) System Perfomance
+ 
+\item[\textbf{Failure Types}]
+(i) Normal Traffic
+
+(ii) Varying Traffic
+
+(iii) Index Failure 
+
+(iv) Randomized DoS Traffic
+\item[\textbf{Input data}] 
+
+(i)
+\item[\textbf{Recovery actions}]
+FUSION minimizes frequent adaptation of the system for the same problem. Instead of simply satisfying the violated goals, FUSION finds a near optimal solution that is less likely to be broken due to fluctuations in the system.
+
+\item[\textbf{Advantages}] 
+
+(i) A learning model is automatically induced from monitored data.
+
+(ii) Automatic online fine-tuning of adaptation logic is done for unanticipated conditions.
+
+(iii) It reduces the upfront effort required for constructing such systems.
+
+(iv) FUSION is capable of learning run-time behaviours unforeseen at design-time.
+
+
+\item[\textbf{Disadvantages}] 
+(i) With DoS, the random nature of traffic makes FUSION to converge to an induced model. Hence FUSION cannot reach a better accuracy in DoS scenario. 
+
+(ii) Due to inaccuracy of induced model, FUSION fails to predict the magnitude of the metrics.
+
+
+\item[\textbf{Case study}] 
+(i) Travel Reservation System
+
+(ii) XTEAM
 
 \end{compactitem}
