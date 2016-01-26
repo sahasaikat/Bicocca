@@ -490,7 +490,6 @@ events’ occurrences which indicates invalid cookies and the weak-discriminatio
 2. Similar-issue retrieval 
 Each issue is treated in the historical issue repository as one document, each signature as one term, and the corresponding delta mutual information (DMI) as the weight of each term. Each of the issues are treated as vectors. The similarity between two issue is determined by measuring the number of overlapping events between the two vectors.
 3. Healing suggestion adaptation The Healing action is stored as verb + target + location, where verb is the healing action, target is the healing source and event is the new issue.
-
 \begin{figure}[H]
 \center
 \includegraphics[width=5in]{img/historicalissue}
@@ -610,10 +609,7 @@ FUSION minimizes frequent adaptation of the system for the same problem. Instead
 
 (iii) It reduces the upfront effort required for constructing such systems.
 
-(iv) FUSION is capable of learning run-time behaviours unforeseen at design-time.
-
-
-\item[\textbf{Disadvantages}] 
+(iv) FUSION is capable of learning run-time behaviours unforeseen at design-time.\item[\textbf{Disadvantages}] 
 (i) With DoS, the random nature of traffic makes FUSION to converge to an induced model. Hence FUSION cannot reach a better accuracy in DoS scenario. 
 
 (ii) Due to inaccuracy of induced model, FUSION fails to predict the magnitude of the metrics.
@@ -625,3 +621,85 @@ FUSION minimizes frequent adaptation of the system for the same problem. Instead
 (ii) XTEAM
 
 \end{compactitem}
+\section{Carzaniga's automatic workaround for web application}\label{CarzanigaAutomaticWorkaround}
+\begin{compactitem}
+\item[\textbf{Title}]Automatic Workarounds for Web Applications
+\item[\textbf{Author}]Antonio Carzaniga, Alessandra Gorla, Nicolo Perino, and Mauro Pezze\item[\textbf{Reference}] 
+\cite{carzaniga_automaticworkaround:_2010}
+
+
+\item[\textbf{Year}] 2010
+
+\item[\textbf{Application Domain}]Web services and QoS-based and AOP
+
+\item[\textbf{Self-Healing steps}]Automatic Workarounds
+
+\item[\textbf{Technical Approach}]
+– Regular expressions
+
+\item[\textbf{Basic Idea}]– The problem occurring in the API’s affects large number of users and cannot be solved in easily. The basic idea is to develop and execute workarounds automatically for solving the faults that have occurred at runtime.
+
+\item[\textbf{Summary of approach}] 
+The automatic workaround architecture has browser extension that performs the interaction between
+web application and the requested server pages. This browser extension deploys the automatic 
+workarounds. The main problem identifiers are the users and the application developers. The framework of the automatic workaround is given as
+
+\begin{figure}[H]
+\center
+\includegraphics[width=5in]{img/automaticworkaroundframework}
+\caption{A framework for automatic workaround}
+\end{figure}
+Step 1: request URL- the interaction begins with a user requesting an application.
+
+Step 2: the browser sends all the data and code of the requested page to the server.
+
+Step 3: the server returns the objects requested. The browser decides for enabling the automatic 
+workaround service based on the returned objects from the server.
+
+Step 4: for finding the workarounds, the browser extension looks for the references for API. If any 
+reference is found the browser extension activates the button for reporting of failure.
+
+Step 5: the user is provided with the requested page and JavaScript code for the failure correction. If no failure occurs, then no JavaScript code is returned with user requested page and the browser extension works a transparent layer.
+
+Step 6: if the failure is perceived by user, signal to the browser extension is given using failure report button.
+
+Step 7: the automatic workaround is activated upon receiving the signal and searches for alternative 
+equivalent sequence. An equivalent sequence is sequence of operations that rectifies the failure. The equivalent sequence has three classes such as 
+(a) Functionally null- these operations have no effects on the functions but can change the 
+order of execution. For e.g., scheduling of processes, race conditions. These can be easily 
+identified and are does not depend on nature of API. (b) Invariant- these are pair of operations where the second operation reverses the effect of the first one. For e.g., zoom-in and zoom-out. These operations can be identified easily 
+and are dependent on the nature of API.
+(c) Alternative- these operations are selected from set of operations. Identification of such operations requires understanding the semantics of the API and is dependent on the nature of API. There is a defined grammar for writing the rules for creating equivalent sequences. The grammar is 
+given as:
+\begin{figure}[H]
+\center
+\includegraphics[width=5in]{img/programrewriting}
+\caption{Program rewriting rules}
+\end{figure}
+
+%<Rule>% ::= <Type><Scope>: <Substitution>%
+
+%<Type>% ::= null | invariant | alternative%
+
+%<Scope>% ::= ANY | ALL | %<number>%
+
+%<Substitution> ::= (<pattern> -> <replacement>)%
+
+The rule consists of three elements, type, scope and substitution. 
+
+(a) Type- The type can be null, invariant or alternative.(b) Scope- Scope determines where the code is to be placed.i.       Scope=ANY- code can be replaced for any one occurrence of pattern
+ii. Scope=ALL- code can be applied to all occurrence of pattern.iii. Scope= number n- code can be applied to nth occurrence of pattern.
+(c) Substitution: the pattern is replaced with the new code. A priority scheme is designed for rewriting the rules; this allows the user to select valid workarounds among selected equivalent sequences. Each rule is assigned a priority value that comprise of success-rate and success. The success-rate is ratio between number of times equivalent sequence is successfully used given the total number of times it is used. Success is total number of times rule has successfully generated a workaround. The comparison of two rules is done by comparing its success-rates first and then the success. The new rule has success-rate and success. If no workaround is available the sequence of operations are alternative then invariant and null. If workaround is available the success-rate and success decides the rule for consideration.
+
+Step 8: - the effectiveness of the rule is evaluated with automatic oracle.Initially if a rule produces a valid workaround it is selected. However, if the equivalent sequence has no effect for the problem solution the rule is rejected. For a failed execution, new application code is executed, the results for new application is compared with failed execution. If two pages have no structural difference, oracle rejects the proposed equivalent sequence. However, if two pages differ minimally, the new application code is accepted as a valid sequence for workaround.
+
+Step 9 and Step 10: - if oracle approves the rule, the same rule is sent with page to the user.
+If the equivalent sequences fails to resolve the problem and is rejected by the oracle, the process is again repeated until the repository of equivalent sequence is exhausted.
+\item[\textbf{Fault Types}](i) (i) System Performance
+\item[\textbf{Failure Types}]
+Web API based failures such as (i) Flickr API Photo visibility tag setting from private to family.(ii) Facebook API for setting graphical element \item[\textbf{Input data}] 
+
+(i)
+\item[\textbf{Recovery actions}]Automatic workarounds provides solution to the runtime problems that rectifies the faults in the applications.
+\item[\textbf{Advantages}](i) The set of rules are written for the problems that are alternative workarounds. (ii) The priority scheme for the rule leads to better selection of workarounds.
+\item[\textbf{Disadvantages}] (i) The amount of data collected is limited as finding reproducible errors is difficult.(ii) The lack of specific user to identify the problems \item[\textbf{Case study}] (i) Google Maps (ii) YouTube \end{compactitem}
