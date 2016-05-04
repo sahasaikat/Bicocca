@@ -1,0 +1,110 @@
+% ------------------------------------------------------------
+\documentclass[a4paper,oneside]{scrreprt}
+
+\usepackage{titlesec}
+\usepackage{vhistory}
+\usepackage{datetime}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage[toc]{glossaries}
+
+
+\makenoidxglossaries
+\input{glossary}
+
+\titleformat*{\subsubsection}{\bfseries}
+% ------------------------------------------------------------
+\begin{document}
+
+\begin{titlepage}
+\titlehead{
+
+}
+
+\title{
+\vspace{-5mm}
+Learning From Failing and Passing Executions At the Speed of Internet
+\begin{center}
+\end{center}
+}
+\subtitle{
+\hspace{27 mm}{\LARGE Report 2}
+\newline
+\newline
+{\LARGE Case Studies}
+}
+\end{titlepage}
+% ------------------------------------------------------------
+\maketitle
+
+% ------------------------------------------------------------
+\chapter*{Document information}\label{docInfo}
+ \begin{tabular}[t]{|l|l|}
+   \hline
+% ------------------------------------------------------------
+   \multicolumn{2}{|l|}{\bf Project} \\ \hline
+   Project full title: & Learning From Failing and Passing Executions\\ 
+    &  At the Speed of Internet\\ \hline
+   Project start date: & 01.11.2015 \\ \hline
+   Project duration: & XX\,months \\ \hline
+
+% ------------------------------------------------------------
+   \multicolumn{2}{|l|}{\bf Document} \\ \hline
+   Report number: & 2\\ \hline
+   Report title: & Case Studies\\ \hline
+   Editors: & L. Mariani D. Micucci \\ \hline
+   Contributors: & L. Mariani  D. Micucci O. Riganelli S. Saha \\ \hline
+   Due date of deliverable: & Month X\\ \hline
+   Draft/Final: & Draft\\ \hline
+   No of pages (including cover): & \pageref{LastPage} \\ \hline
+   Keywords: & Software Ecosystems, Systems of Systems\\ \hline
+% ------------------------------------------------------------
+\end{tabular}
+\newpage
+\section*{Abstract}
+Almost all computer users have had the unpleasant experience to watch their
+favorite applications fail and crash frequently after an update. These
+problems are so common that is sufficient browsing the Web to find millions of reports
+about failures observed after updates and incompatibilities caused by the
+interaction of a newly installed component with the existing components. Even
+worse each of these problems affected a population of thousands of users.
+
+This document aims to identify ``real-world'' case studies
+that highlight these failings and will form the basis for evaluating the
+innovative solutions developed within the LEARN project.  
+
+
+
+
+\begin{versionhistory}
+\vhEntry{1.0}{16.12.15}{Riganelli}{Added Previous Studies on Software
+Ecosystems} 
+\vhEntry{1.0}{25.11.15}{Riganelli}{Added Software Ecosystem case studies and
+case studies and bug examples} 
+\vhEntry{1.0}{18.11.15}{Riganelli}{Added System of Systems case studies and bug
+examples}
+\vhEntry{1.0}{13.11.15}{Riganelli}{Added information extracted by the Google Doc "Target Systems".}
+ \vhEntry{1.0}{12.11.15}{Riganelli}{The first draft of the
+  Report 2 is created.}
+
+ 
+\end{versionhistory}
+
+
+\tableofcontents
+\cleardoublepage
+
+\input{introduction}
+\input{softwareEcosystems}
+\input{systemsOfSystems}
+\input{conclusion}
+
+
+
+
+
+
+\printnoidxglossaries
+\bibliographystyle{plain}
+\bibliography{biblio}
+\end{document}
