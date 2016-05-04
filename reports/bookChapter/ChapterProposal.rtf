@@ -1,0 +1,257 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww17320\viewh11920\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+Chapter title: Runtime Error Reaction and Prevention \
+Chapter leader: Antoine Rollet\
+Chapter authors: Yli\'e8s Falcone, Leonardo Mariani, Antoine Rollet, ???\
+Abstract: \
+The chapter describes how to use in-the-field runtime techniques to improve the dependability of software systems. In particular, we first present an overall vision of the problem of ensuring highly dependable behaviours at runtime, and then we present the relevant approaches organized in two sections. The first of these sections presents techniques that can prevent the system producing bad behaviours or entering bad states. The second of these sections describes techniques that can detect if the system has produced a bad behaviour or has entered a bad state and react to the situation accordingly (e.g., moving the system back to a correct state). The chapter also includes a section summarizing the main achievements and the open challenges in the area. A conclusion section closes the chapter.   \
+Keywords: runtime enforcement, reaction to error, self-healing, autonomic computing\
+Outline: \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \kerning1\expnd0\expndtw0 1. INTRODUCTION\
+\
+2. RUNTIME QUALITY ASSURANCE\
+\'97 overall picture (enforcement vs reaction)\
+\'97 monitoring (what behaviour to collect)\
+\'97 strategies (quick description, full description in Secs 3 and 4)\
+\'97 actuation (how to affect the behaviour of the system, is a kind of support from the system needed?)\
+\'97 classes of problems that can be prevented/fixed \
+\'97 specifications (is a specification needed? When? Why?)\
+\
+3. ENFORCE THE CORRECT BEHAVIOUR\
+\
+4. REACT TO WRONG BEHAVIOURS\
+4.1 Approaches (MAPE-K, Feedback Control Loop)\
+4.2 Architecture-Based (architecture-based+multiversion+components+services)\
+4.3 Workarounds\
+4.4 Dynamic/Unplanned\
+\
+5. ACHIEVEMENTS AND OPEN CHALLENGES\
+\
+6. CONCLUSIONS\expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 Possible Reviewers: \
+\
+Possible list of references:\
+Supervisory Control Theory of Discrete Systems\
+----------------------------------------------\
+\
+[RW87] Peter J Ramadge et W Murray Wonham. Supervisory control of a class of discrete event processes. Society for Industrial and Applied Mathematics (SIAM) journal on control and optimization, vol. 25, no. 1, pages 206\'96230, 1987.\
+\
+[RW89] Ramadge, P. J. and W. M. Wonham: 1989, `The Control of Discrete Event Systems'. Proceedings of the IEEE; Special issue on Dynamics of Discrete Event Systems 77 (1), 81-98\
+\
+[BHGW93] Balemi, S., G. Hoffmann, H. Wong-Toi, and G. Franklin: 1993, `Supervisory Control of a Rapid Thermal Multiprocessor'. IEEE Transactions on Automatic Control 38 (7), 1040-1059. \
+\
+[HKG97] Holloway, L., B. Krogh, and A. Giua: 1997, `A survey of Petri Net Methods for controlled Discrete Event Systems'. Discrete Event Dynamic Systems: Theory and Application 7 , 151-190.\
+\
+[MBLL00] H. Marchand, P. Bournai, M. Le Borgne, P. Le Guernic. "Synthesis of Discrete-Event Controllers Based on the Signal Environment", Discrete Event Dynamic Systems, 10(4), pp. 325--346.\
+\
+[Won04] W. Murray Wonham. Supervisory control of discrete event systems, 2004.\
+\
+[MDG+15] Mathilde Machin, Fanny Dufoss\'e9, J\'e9r\'e9mie Guiochet, David Powell, Matthieu Roy et H\'e9l\'e8ne Waeslynck. Model-Checking and Game theory for Synthesis of Safety Rules. In International Symposium on High Assurance Systems Engineering (HASE), pages 36\'9643, 2015.\
+\
+Control of Timed systems\
+------------------------\
+\
+[MPS95] Maler, O., A. Pnueli and J. Sifakis: 1995, `On the Synthesis of Discrete Controllers for timed Systems'. Proceedings STACS'95 , , Vol. 900 of Lecture Notes in Computer Science , pp. 229-242.\
+\
+[AMP94] Eugene Asarin, Oded Maler, and Amir Pnueli. "Symbolic controller synthesis for discrete and timed systems." Hybrid systems II. Springer Berlin Heidelberg, 1994. 1-20.\
+\
+\
+--------------------------------------------------------------------------\
+Runtime Reflection\
+------------------\
+\
+[Bau08] Andreas Bauer. The Theory and Practice of Runtime Reflection - A Model-based Framework for Dynamic Analysis of Distributed Reactive Systems. Number 1. VDM Verlag Dr. M\'fcller, Saarbr\'fccken, 2008.\
+\
+--------------------------------------------------------------------------\
+Runtime enforcement\
+-------------------\
+-------------------\
+\
+Tutorial\
+------------\
+\
+[Fal10] Y. Falcone. You should Better Enforce than Verify. Tutorial in RV 2010: First International Conference on Runtime Verification.\
+\
+Caracterisation and classification of enforceable properties\
+------------------------------------------------------------\
+\
+[Vis00] Mahesh Viswanathan. Foundations for the run-time analysis of software systems. PhD thesis, University of Pennsylvania, Philadelphia, PA, USA, 2000.\
+\
+[Sch00] Fred B. Schneider. Enforceable security policies. ACM Trans. Inf. Syst. Secur., 3(1) :30-50,2000.\
+\
+[Ham06] Kevin W. Hamlen. Security Policy Enforcement By Automated Program-Rewriting. PhD thesis, Cornell University, 2006.\
+\
+[HMS06] Kevin W. Hamlen, Greg Morrisett, and Fred B. Schneider. Computability classes for enforcement mechanisms. ACM Trans. Program. Lang. Syst., 28(1) :175-205, 2006.\
+\
+\
+[LBW05] Jay Ligatti, Lujo Bauer, and David Walker. Enforcing Non-safety Security Policies with Program Monitors. In ESORICS, pages 355-373, 2005.\
+\
+[Lig06] Jarred Adam Ligatti. Policy Enforcement via Program Monitoring. PhD thesis, Princeton University, June 2006.\
+\
+[LBW07] Jay Ligatti, Lujo Bauer, and David Walker. Composing expressive run-time security policies. ACM Transactions on Software Engineering and Methodology, November 2007.\
+\
+[LBW09] Jay Ligatti, Lujo Bauer, and David Walker. Run-time enforcement of nonsafety policies. ACM Transactions on Information and System Security, 12(3) :1-41, January 2009.\
+\
+[FFM09a] Yli\'e8s Falcone, Jean-Claude Fernandez, Laurent Mounier. "Runtime Verification of Safety-Progress Properties",In 9th International Workshop, RV 2009, Grenoble, France, June 26-28, 2009. Springer. pp 40-59.\
+\
+[FFM12] Yli\'e8s Falcone, Jean-Claude Fernandez, Laurent Mounier. What can you Verify and Enforce at Runtime? In STTT: Software Tools for Technology Transfer \'96 Special issue on Runtime Verification. June 2012, Volume 14, Issue 3, pp 349-382.\
+\
+\
+[Fon04] Philip W. L. Fong. Access control by tracking shallow execution history. In In Proceedings of the 2004 IEEE Symposium on Security and Privacy, pages 43-55. IEEE Computer Society Press, 2004.\
+\
+Synthesis of enforcement mechanisms\
+-----------------------------------\
+\
+[MM07] Fabio Martinell and Ilaria Matteucci. Through modeling to synthesis of security automata. Electron. Notes Theor. Comput. Sci., 179 :31-46, 2007.\
+\
+\
+[FFM08] Yli\'e8s Falcone, Jean-Claude Fernandez, and Laurent Mounier. Synthesizing enforcement monitors wrt. the safety-progress classification of properties. In ICISS '08 : Proceedings of the 4th International Conference on Information Systems Security, pages 41-55, Berlin, Heidelberg, 2008. Springer-Verlag.\
+\
+[FFM09a] Yli\'e8s Falcone, Jean-Claude Fernandez, Laurent Mounier. "Runtime Verification of Safety-Progress Properties",In 9th International Workshop, RV 2009, Grenoble, France, June 26-28, 2009. Springer. pp 40-59.\
+\
+[FFM09b] Yli\'e8s Falcone, Jean-Claude Fernandez, and Laurent Mounier. Enforcement monitoring wrt. the safety-progress classification of properties. In Sung Y. Shin and Sascha Ossowski, editors, SAC, pages 593-600. ACM, 2009.\
+\
+[FFM12] Yli\'e8s Falcone, Jean-Clause Fernandez, Laurent Mounier. What can you Verify and Enforce at Runtime? In STTT: Software Tools for Technology Transfer \'96 Special issue on Runtime Verification. June 2012, Volume 14, Issue 3, pp 349-382.\
+\
+[BKKW15] Bloem, R., K\'f6nighofer, B., K\'f6nighofer, R., Wang, C.: Shield synthesis: runtime enforcement for reactive systems. In Tools and Algorithms for the Construction and Analysis of Systems - 21st International Conference, TACAS 2015, Held as Part of the European Joint Conferences on Theory and Practice of Software, ETAPS 2015, London, UK, April 11-18, 2015. Proceedings. pp. 533\'96548 (2015)\
+\
+[DLR15]- Dolzhenko, E., Ligatti, J., Reddy, S.: Modeling runtime enforcement with mandatory results automata. International Journal of Information Security 14(1), 47\'9660 (Feb 2015), http://dx.doi.org/10.1007/s10207-014-0239-8\
+\
+Runtime Enforcement of Extended Properties / (and Distributed)? \
+--------------------------------------------------------------\
+to be discussed maybe simply "Runtime Enforcement of Timed Properties", see below)\
+\
+Component Based Systems (maybe not here since there is a chapter dedicated to distributed aspects?):\
+\
+[CEFJ15] Hadil Charafedine, Khalil El-Harake, Yli\'e8s Falcone, Mohamad Jaber. Runtime Enforcement for Component-Based Systems. In SAC-SVT 2015, the 30th ACM/SIGAPP Symposium On Applied Computing \'96 Software Verification and Testing track, Salamanca, Spain.\
+\
+Timed systems:\
+\
+[Mat07] Matteucci, I.: Automated synthesis of enforcing mechanisms for security properties in a timed setting. Electron. Notes Theor. Comput. Sci. 186 (2007) 101\'96120\
+\
+[PFJ+12] Pinisetty, S., Falcone, Y., J\'e9ron, T., Marchand, H., Rollet, A., Nguena-Timo, O.L.: Runtime enforcement of timed properties. In: Qadeer, S., Tasiran, S. (eds.) Runtime Verification, Third International Conference, RV 2012, Istanbul, Turkey, September 25-28, 2012, Revised Selected Papers. Lecture Notes in Computer Science, vol. 7687, pp. 229\'96244. Springer (2012)\
+\
+[BJKZ13] Basin, D., Jug\'e9, V., Klaedtke, F., Zalinescu, E.: Enforceable security policies revisited. ACM Trans. Inf. Syst. Secur. 16 (2013) 3:1\'963:26\
+\
+[PFJM14] S. Pinisetty, Y. Falcone, T. J\'e9ron, H. Marchand. Runtime Enforcement of Parametric Timed Properties with Practical Applications. In WODES 2014: the 12th IFAC \'96 IEEE International Workshop on Discrete Event Systems\
+\
+[PFJM14] Pinisetty, S., Falcone, Y., J\'e9ron, T., Marchand, H.: Runtime enforcement of regular timed properties. In: Cho, Y., Shin, S.Y., Kim, S., Hung, C., Hong, J. (eds.) Symposium on Applied Computing, SAC 2014, Gyeongju, Republic of Korea - March 24 - 28, 2014. pp. 1279\'961286. ACM (2014), http://dl.acm.org/citation.cfm?id=2554850\
+\
+[PFJ+14] Pinisetty, S., Falcone, Y., J\'e9ron, T., Marchand, H., Rollet, A., Nguena-Timo, O.: Runtime enforcement of timed properties revisited. Formal Methods in System Design 45(3), 381\'96422 (2014)\
+\
+[RFR+15] Renard, M., Falcone, Y., Rollet, A., Pinisetty, S., J\'e9ron, T., Marchand, H.: Enforcement of (timed) properties with uncontrollable events. In Leucker, M., Rueda, C., Valencia, F.D. (eds.) Theoretical Aspects of Computing - ICTAC 2015. volume 9399 of Lecture Notes in Computer Science, pp. 542-560 (2015)\
+\
+\
+Tools and frameworks\
+--------------------\
+\
+[Dru00] Drusinsky, D.: The Temporal Rover and the ATG rover. In: 7 th Int. SPIN Workshop on SPIN Model Checking and Software Verification. (2000) 323\'96330\
+\
+[HR03] Havelund, K., Rosu, G.: An overview of the runtime verification tool Java PathExplorer. Formal Methods in System Design 24 (2003)\
+\
+[Hav08] Havelund, K.: Runtime verification of C programs. In: TestCom\'9208: 20 th IFIP int. conf. on Testing of Software and Communicating Systems. (2008) 7\'9622\
+\
+\
+[ES00a] Ulfar Erlingsson and Fred B. Schneider. IRM enforcement of Java stack inspection. In In IEEE Symposium on Security and Privacy, pages 246-255, 2000.\
+\
+[ES00b] Ulfar Erlingsson and Fred B. Schneider. SASI enforcement of security policies : A retrospective. In WNSP : New Security Paradigms Workshop. ACM Press, 2000.\
+\
+[BLW05] Lujo Bauer, Jay Ligatti, and David Walker. Composing security policies with polymer. In PLDI '05 : Proceedings of the 2005 ACM SIGPLAN conference on Programming language design and implementation, pages 305-314, New York, NY, USA, 2005. ACM.\
+\
+[Lig06] Jarred Adam Ligatti. Policy Enforcement via Program Monitoring. PhD thesis, Princeton University, June 2006.\
+\
+[PMMD05] Jaime A. Pavlich-Mariscal, Laurent Michel, and Steven A. Demurjian. A formal enforcement framework for role-based access control using aspect-oriented programming. In Lionel C. Briand and Clay Williams, editors, MoDELS, volume 3713 of Lecture Notes in Computer Science, pages 537-552. Springer, 2005.\
+\
+[CCBS05] Frederic Cuppens, Nora Cuppens-Boulahia, and Thierry Sans. Nomad : A security model with non atomic actions and deadlines. In CSFW '05 : Proceedings of the 18th IEEE workshop on Computer Security Foundations, pages 186-196, Washington, DC, USA, 2005. IEEE Computer Society.\
+\
+[CR05] Feng Chen and Grigore Rosu. Java-MOP : A monitoring oriented programming environment for java. In Proceedings of the Eleventh International Conference on Tools and Algorithms for the construction and analysis of systems (TACAS'05), volume 3440 of LNCS, pages 546-550. Springer-Verlag, 2005.\
+\
+[CDR05] Feng Chen, Marcelo D'Amorim, and Grigore Rosu. Checking and correcting behaviors of Java programs at runtime with java-mop. In Workshop on Runtime Verification (RV'05), volume 144(4) of ENTCS, pages 3-20, 2005.\
+\
+[CCBR06] Frederic Cuppens, Nora Cuppens-Boulahia, and Tony Ramard. Availability enforcement by obligations and aspects identification. In ARES '06 : Proceedings of the First International Conference on Availability, Reliability and Security (ARES'06), pages 229-239, Washington, DC, USA, 2006. IEEE Computer Society.\
+\
+[CR07] Feng Chen and Grigore Rosu. MOP : An Efficient and Generic Runtime Verification Framework. In Object-Oriented Programming, Systems, Languages and Applications(OOPSLA'07), pages 569-588. ACM press, 2007.\
+\
+[OWKK07] Anderson Santana de Oliveira, Eric Ke Wang, Claude Kirchner, and H\'e9l\'e8ne Kirchner. Weaving rewrite-based access control policies. In ACM Conference on Computer and Communication Security, November 2007.\
+\
+[TS07] Nora Cuppens-Boulahia Thierry Sans, Frederic Cuppens. A framework to enforce access control, usage control and obligations. In Annals of Telecommunications, 2007.\
+\
+[PMCR08] Rodolfo Pellizzoni, Patrick Meredith, Marco Caccamo, and Grigore Rosu. Hardware runtime monitoring for dependable cots-based real-time embedded systems. In Proceedings of the 29th IEEE Real-Time System Symposium (RTSS'08), pages 481-491, 2008.\
+\
+[FMFR11] Yli\'e8s Falcone, Laurent Mounier, Jean-Claude Fernandez, Jean-Luc Richier. Runtime Enforcement Monitors: composition, synthesis, and enforcement abilities. In FMSD: Formal Methods in System Design. Volume 38, Number 3 (2011), 223-262.\
+\
+[FCJ12] Yli\'e8s Falcone, S\'e9bastien Currea, Mohamad Jaber. RV Droid: Runtime Verification and Enforcement for Android Applications. In RV\'9212: International conference on Runtime Verification.\
+\
+[EFJLM14] Khalil El-Harake, Yli\'e8s Falcone, Wassim Jerad, Mattieu Langet, Mariem Mamlouk. Blocking Advertisements on Android Devices Using Monitoring Techniques. In ISoLA 2014: 6th International Symposium on Leveraging Applications of Formal Methods, Verification and Validation. Specialized Techniques and Applications.\
+\
+[BKKW15] Bloem, R., K\'f6nighofer, B., K\'f6nighofer, R., Wang, C.: Shield synthesis: runtime enforcement for reactive systems. In Tools and Algorithms for the Construction and Analysis of Systems - 21st International Conference, TACAS 2015, Held as Part of the European Joint Conferences on Theory and Practice of Software, ETAPS 2015, London, UK, April 11-18, 2015. Proceedings. pp. 533\'96548 (2015)\
+\
+[PFJM15] Srinivas Pinisetty, Yli\'e8s Falcone, Thierry J\'e9ron, Herv\'e9 Marchand. TiPEX: a tool chain for Timed Property Enforcement during eXecution. In RV 2015, 15th International Conference on Runtime Verification.\
+\
+--------------------------------------------------------------------------\
+\
+GENERAL APPROACHES TO RUNTIME REACTION TO ERRORS\
+\
+* MAPE-K BASED (Monitor-Analyze-Plan-Execute)\
+J.O. Kephart and D.M. Chess. 2003. The vision of autonomic computing. Computer 36, 1 (2003), 41\'9650.\
+\
+De la Iglesia, D. Gil, and Danny Weyns. \'93MAPE-K Formal Templates to Rigorously Design Behaviors for Self-Adaptive Systems.\'94 Transactions on Autonomous and Adaptive Systems. ACM, 2014. \
+\
+* FEEDBACK LOOP\
+	Yuriy Brun, Giovanna Di Marzo Serugendo, Cristina Gacek, Holger Giese, Holger M. Kienle, Marin Litoiu, Hausi A. M\'fcller, Mauro Pezz\'e8, Mary Shaw:\
+Engineering Self-Adaptive Systems through Feedback Loops. Software Engineering for Self-Adaptive Systems 2009: 48-70\
+\
+\
+WORKAROUNDS\
+\
+B. Garvin, M. Cohen, and M. Dwyer. Failure avoidance in configurable systems through feature locality. In J. C~A , amara, R. Lemos, C. Ghezzi, and A. Lopes, editors, Assurances for Self-Adaptive Systems, volume 7740 of Lecture Notes in Computer Science, pages 266\'96296. 2013\
+\
+Carzaniga, Antonio, Alessandra Gorla, Nicol\'f2 Perino, and Mauro Pezz\'e8. \'93Automatic Workarounds for Web Applications.\'94 In Proceedings of the Eighteenth ACM SIGSOFT International Symposium on Foundations of Software Engineering, 237\'9646. FSE \'9210. New York, NY, USA: ACM, 2010. doi:10.1145/1882291.1882327.\
+\
+Carzaniga, Antonio, Alessandra Gorla, Andrea Mattavelli, Nicol\'f2 Perino, and Mauro Pezz\'e8. \'93Automatic Recovery from Runtime Failures.\'94 In Proceedings of the 2013 International Conference on Software Engineering, 782\'9691. ICSE \'9213. Piscataway, NJ, USA: IEEE Press, 2013. http://dl.acm.org/citation.cfm?id=2486788.2486891.\
+\
+	Antonio Carzaniga, Alessandra Gorla, Nicol\'f2 Perino, Mauro Pezz\'e8:\
+Automatic Workarounds: Exploiting the Intrinsic Redundancy of Web Applications. ACM Trans. Softw. Eng. Methodol. 24(3): 16 (2015)\
+\
+ARCHITECTURE BASED\
+J. Kramer and J. Magee. 2007. Self-Managed Systems: an Architectural Challenge. In Future of Software Engineering (FOSE \'9207). IEEE Computer Society, Washington, DC, USA, 259\'96268\
+\
+D. Garlan, S.-W. Cheng, A.-C. Huang, B. Schmerl, and P. Steenkiste. 2004. Rainbow: Architecture-Based Self Adaptation with Reusable Infrastructure. IEEE Computer 37 (2004), 46\'9654. Issue 10.\
+\
+Swanson, Jacob, Myra B. Cohen, Matthew B. Dwyer, Brady J. Garvin, and Justin Firestone. \'93Beyond the Rainbow: Self-Adaptive Failure Avoidance in Configurable Systems.\'94 In Proceedings of the 22nd ACM SIGSOFT International Symposium on Foundations of Software Engineering,(FSE-22), Hong Kong, China, 377\'9688, 2014.\
+\
+Davide Lorenzoli, Leonardo Mariani, Mauro Pezz\'e8: Towards Self-Protecting Enterprise Applications. ISSRE 2007: 39-48\
+\
+* MULTI-VERSION EXECUTION\
+Hosek, Petr, and Cristian Cadar. \'93Safe Software Updates via Multi-Version Execution.\'94 In Proceedings of the 2013 International Conference on Software Engineering, 612\'9621. ICSE \'9213. Piscataway, NJ, USA: IEEE Press, 2013. http://dl.acm.org/citation.cfm?id=2486788.2486869.\
+\
+* COMPONENTS\
+Chang, Herv\'e9, Leonardo Mariani, and Mauro Pezz\'e8. \'93Exception Handlers for Healing Component-Based Systems.\'94 ACM Trans. Softw. Eng. Methodol. 22, no. 4 (October 2013): 30:1\'9630:40.\
+\
+Herv\'e9 Chang, Leonardo Mariani, Mauro Pezz\'e8: In-field healing of integration problems with COTS components. ICSE 2009: 166-176\
+\
+* SERVICES\
+Friedrich, G., M. Fugini, E. Mussi, B. Pernici, and G. Tagni. \'93Exception Handling for Repair in Service-Based Processes.\'94 IEEE Transactions on Software Engineering 36, no. 2 (March 2010): 198\'96215.\
+\
+Ding, Rui, Qiang Fu, Jian-Guang Lou, Qingwei Lin, Dongmei Zhang, Jiajun Shen, and Tao Xie. \'93Healing Online Service Systems via Mining Historical Issue Repositories.\'94 In 2012 Proceedings of the 27th IEEE/ACM International Conference on Automated Software Engineering (ASE), 318\'9621, 2012. doi:10.1145/2351676.2351735.\
+\
+UNPLANNED \
+Le Goues, C., ThanhVu Nguyen, S. Forrest, and W. Weimer. \'93GenProg: A Generic Method for Automatic Software Repair.\'94 IEEE Transactions on Software Engineering 38, no. 1 (January 2012): 54\'9672. doi:10.1109/TSE.2011.104.\
+\
+\
+SELF-HEALING SURVEYS\
+Psaier, Harald, and Schahram Dustdar. \'93A Survey on Self-Healing Systems: Approaches and Systems.\'94 Computing 91, no. 1 (August 5, 2010): 43\'9673. doi:10.1007/s00607-010-0107-y.\
+\
+Keromytis, Angelos D. \'93Characterizing Software Self-Healing Systems.\'94 In Computer Network Security, edited by Vladimir Gorodetsky, Igor Kotenko, and Victor A. Skormin, 22\'9633. Communications in Computer and Information Science 1. Springer Berlin Heidelberg, 2007. http://link.springer.com/chapter/10.1007/978-3-540-73986-9_2.\
+\
+Ghosh, Debanjan, Raj Sharman, H. Raghav Rao, and Shambhu Upadhyaya. \'93Self-Healing Systems\'97survey and Synthesis.\'94 Decision Support Systems 42, no. 4 (2007): 2164\'9685.\
+}

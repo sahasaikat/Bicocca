@@ -1,0 +1,102 @@
+\chapter{Systems of Systems}\label{ch:SoS}
+The challenging application domains of Systems of Systems are:
+\begin{itemize}
+  \item Integrated Air Defense: The air defenses of modern military forces are
+  clear examples of systems-of- systems. An integrated air defense system is composed of a geographically dispersed network of semi-autonomous elements. These include surveillance radars, passive surveillance systems, missile launch batteries, missile tracking and control sites, airborne surveillance and tracking radars, fighter aircraft, and anti-aircraft artillery. All units are tied together by a communications network with command and control applied at local, regional, and national centers.
+  
+  \item Airports: Independent systems for operation of each airline,
+  leasing/selling of resources, air traffic control of this and other airports; support services of catering, rail and roads. An airport is another complex system; however, the airport involves aircraft, support trucks, baggage-handling equipment, and many other systems that can and do operate independently of each other. For the airport to function, it needs to have the right mix of these independent systems, and these systems need to cooperate with each other.
+  
+  \item Transport network: Transport networks are often composed of independently
+  owned and operated systems that are geographically distributed.  Transport network covers a wide range of potential applications of information and computer technology to road and transport networks. These run the gamut from improved public service vehicle communication to automated highways with robotically driven cars.
+\end{itemize}
+
+Deployable ``real-world'' case studies on these challenging domains are difficult to
+retrieve due to these usually integrate closed or proprietary systems.
+However, according to the definition of Systems of Systems, to this class belong
+any software systems arisen as result of integration of various operationally independent
+systems, even developed with different technologies and for diverse platforms.
+The integration is necessary to promote cooperation among these independent
+systems in order to provide more complex functions, which could not be provided
+by any system working separately.
+For this reason, I searched on SourceForge and Github for potential target
+systems that integrate independent systems to exploit more sophisticated
+functionalities:
+
+
+\begin{itemize}
+  \item eXo Platform: it is an open-source social-collaboration software
+  designed for enterprises. Bug example:
+  \begin{itemize}
+    \item Description: With the upgrade of exo.ws.rest.core-2.4.0-Alpha3 library
+    in GateIn (an Opensource Website Framework) REST management service is
+    unavailable.
+    \item Link: https://jira.exoplatform.org/browse/WS-285
+    \item Root cause: Confirmed that RequestHandlerImpl calls end() before
+    response.writeResponse().
+    \item Status: Closed.
+  \end{itemize}
+  \item Clementine (https://www.clementine-player.org): Clementine is a
+  multiplatform music player that integrates different systems such as music visualizer, Internet radios and cloud
+  storage. Bug example:
+  \begin{itemize}
+    \item Description: Soundcloud (a global online audio distribution platform)
+    Playback not working.
+    \item Link: https://github.com/clementine-player/Clementine/issues/4847
+    \item Root cause: SoundCloud made some major changes to their platform a few
+    months ago, and ever since then out-of-date apps like clementine fail to work.
+    \item Status: Open.
+  \end{itemize}
+  \item Pidgin (https://pidgin.im): it is a free and
+  open-source multi-platform instant messaging client that integrates many
+  instant messaging systems, allowing the user to simultaneously log into
+  various services from one application.  Bug example:
+  \begin{itemize}
+    \item Description:Can't Connect to Facebook Account Any Longer.
+    \item Link: https://developer.pidgin.im/ticket/16701
+    \item Root cause: Facebook dropped XMPP support, which breaks pidgin implementation.
+    \item Status: Open.
+  \end{itemize}
+  \item ThinkUp (https://www.thinkup.com): it is an open-source social media
+  aggregation and analysis tool that provides insights into activity on
+  social networks like Twitter, Facebook, and Instagram.  Bug example:
+  \begin{itemize}
+    \item Description:  Foursquare plugin returning API errors.
+    \item Link: https://github.com/ThinkUpLLC/ThinkUp/pull/1974
+    \item Root cause: Foursquare API Deprecated. The new API mandates that
+    a ``v parameter'' with the date of the API version have to be supplied.
+    \item Status: Closed.
+  \end{itemize}
+  \item Socioboard Core (https://github.com/socioboard/socioboard-core):
+  Socioboard Core is an open source social media management, analytics and reporting platform that supports nine social media
+  networks. Bug example:
+  \begin{itemize}
+    \item Description: Facebook pages are shown but after clicking they are not
+    added.
+    \item Link: https://github.com/socioboard/socioboard-core/issues/8
+    \item Root cause:  Outdated AP calls in Facebook.dll.
+    \item Status: Closed.
+  \end{itemize}
+  \item OpenKM (http://www.openkm.com): it is a web base document management
+  application that uses standards and Open Source technologies integrating
+  essential document management, collaboration and advanced search functionality into one solution.  Bug example:
+  \begin{itemize}
+    \item Description: ZOHO (web-based online office suite) integration not
+    working properly. When a user opens a document in ZOHO, a copy of this document is generated. Now, if a second user also opens the same document, he gets a new copy instead of using the copy of the first user.
+    \item Link: http://issues.openkm.com/view.php?id=3044
+    \item Root cause: In the sendToZoho-method a copy of the document is always
+    created without checking if there is already an open copy.
+    \item Status: Open.
+  \end{itemize}
+  \item Odoo (https://www.odoo.com): Odoo is a suite of
+  open-source enterprise management applications to handle billing, accounting, manufacturing, purchasing, warehouse
+  management, and project management.  Bug example:
+  \begin{itemize}
+    \item Description: Odoo order confirmation page is not displayed after
+    a payment via PayPal.
+    \item Link: https://github.com/odoo/odoo/issues/9065
+    \item Root cause: The http csrf is default enabled, so callbacks raises a http
+    error 400: Invalid CSRF Token.
+    \item Status: Closed.
+  \end{itemize}
+\end{itemize}

@@ -1,0 +1,103 @@
+% ------------------------------------------------------------
+\documentclass[a4paper,oneside]{scrreprt}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{vhistory}
+\usepackage{datetime}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage[titletoc]{appendix}
+\usepackage{paralist}
+\usepackage{amssymb}
+
+\renewcommand{\appendixname}{Appendix}
+\titleformat*{\subsubsection}{\bfseries}
+% ------------------------------------------------------------
+\begin{document}
+
+\begin{titlepage}
+\titlehead{
+
+}
+
+\title{
+\vspace{-5mm}
+Learning From Failing and Passing Executions At the Speed of Internet
+\begin{center}
+\end{center}
+}
+\subtitle{
+\hspace{27 mm}{\LARGE Report 1}
+\newline
+\newline
+{\LARGE State of the Art}
+}
+\end{titlepage}
+% ------------------------------------------------------------
+\maketitle
+% ------------------------------------------------------------
+\chapter*{Document information}\label{docInfo}
+ \begin{tabular}[t]{|l|l|}
+   \hline
+% ------------------------------------------------------------
+   \multicolumn{2}{|l|}{\bf Project} \\ \hline
+   Project full title: & Learning From Failing and Passing Executions\\ 
+    &  At the Speed of Internet\\ \hline
+   Project start date: & 01.11.2015 \\ \hline
+   Project duration: & XX\,months \\ \hline
+
+% ------------------------------------------------------------
+   \multicolumn{2}{|l|}{\bf Document} \\ \hline
+   Report number: & 1\\ \hline
+   Report title: & State of the Art \\ \hline
+   Editors: & L. Mariani D. Micucci \\ \hline
+   Contributors: & L. Mariani  D. Micucci O. Riganelli S. Saha \\ \hline
+   Due date of deliverable: & Month X\\ \hline
+   Draft/Final: & Draft\\ \hline
+   No of pages (including cover): & \pageref{LastPage} \\ \hline
+   Keywords: & Self-Healing\\ \hline
+% ------------------------------------------------------------
+\end{tabular}
+\newpage
+\section*{Abstract}
+In Section \ref{ch:selfHelingDefinition}, we present different self-healing definition.\\
+
+In Section \ref{ch:selfHelingArchitecture}, we present different self-healing Architecture and Self-Healing Loop Used by the Authors.\\
+
+In Section \ref{ch:SelfHealingClassificationSchema}, we present the Classification Schema described by each authors in the papers. The Classification-Schema can be broadly classified as the different Domains where Self-Healing Technologies has been used, The Different Technical Approaches and Steps involved in the Self-Healing Process.\\
+
+In Section \ref{ap:approches}, we present the detailed list of self-healing approaches used by different authors \\
+
+
+
+\begin{versionhistory}
+\vhEntry{1.0}{04.12.15}{Saha}{Added appendix A.}  
+  \vhEntry{1.0}{12.11.15}{Saha}{The first draft of the
+  report 1 is created.}
+
+ 
+\end{versionhistory}
+
+
+\tableofcontents
+
+\cleardoublepage
+
+
+\input{selfHealingDefinition}
+\input{selfHealingArchitecture}
+\input{selfHealingClassificationSchema}
+
+\input{appendixA}
+
+
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{biblio}
+\end{document}
